@@ -1,12 +1,22 @@
 import React from 'react';
+import axios from 'axios';
+import AJAX from '../config';
 
 import Overview from './Overview';
 import Questions from './Questions';
 import Ratings from './Ratings';
 import RelatedItems from './RelatedItems';
 
-const App = (props: any) => {
+// AJAX Example
+// function ajax() {
+//   axios.get(AJAX.URL, {
+//     headers: {
+//       'Authorization': `token ${AJAX.API_KEY}`
+//     }
+//   })
+// }
 
+const App = (props: any) => {
   return (
     <div>
       <h1>App</h1>
