@@ -6,7 +6,7 @@ npm
 npm-debug.log
 node_modules/
 public/
-config.js
+config.ts
 
 pids
 *.pid
