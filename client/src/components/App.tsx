@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import GET from '../../../api/GET';
 
 import Overview from './Overview';
 import Questions from './Questions';

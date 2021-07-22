@@ -157,9 +157,6 @@ const GET = {
       }
     }
 
-  },
-  interactions: {
-
   }
 }
 
