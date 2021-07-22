@@ -16,7 +16,16 @@ const GET = {
     }
   },
   reviews: {
-
+    getReview: function() {
+      axios.get(AJAX.URL + 'reviews', {
+        headers: {
+          'Authorization': `${AJAX.API_KEY}`
+        }
+      })
+        .then((response) => {
+          console.log(response.data);
+        })
+    }
   },
   questions: {
 
