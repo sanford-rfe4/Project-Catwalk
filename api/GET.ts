@@ -143,6 +143,19 @@ const GET = {
     }
   },
   cart: {
+    // Get all the items from a users cart.
+    getCart: async function() {
+      try {
+        let result = await axios.get(AJAX.URL + '/cart', {
+          headers: header
+        });
+        console.log(result.data);
+        return result.data;
+      } catch(err) {
+        console.log('Could not retrieve cart.')
+        throw err;
+      }
+    }
 
   },
   interactions: {

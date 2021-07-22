@@ -6,22 +6,10 @@ import Questions from './Questions';
 import Ratings from './Ratings';
 import RelatedItems from './RelatedItems';
 
-let getProducts = GET.products.getProducts;
-let getProductById = GET.products.getProductById;
-let getProductStylesById = GET.products.getProductStylesById;
-let getRelatedProductsById = GET.products.getRelatedProductsById;
-let getSortedProductReviews = GET.reviews.getSortedProductReviews;
-let getProductReviewMetaDataById = GET.reviews.getProductReviewMetaDataById;
-let getProductQuestionsById = GET.questions.getProductQuestionsById;
-let getAnswersForQuestionsByQuestionId = GET.questions.getAnswersForQuestionsByQuestionId;
-
 const App = (props: any) => {
 
   useEffect(() => {
-    getProductReviewMetaDataById(19100);
-    getRelatedProductsById(19100);
-    getProductQuestionsById(19100, 1, 20);
-    getAnswersForQuestionsByQuestionId(123956);
+    console.log('componentDidMount');
   }, [])
 
   return (
