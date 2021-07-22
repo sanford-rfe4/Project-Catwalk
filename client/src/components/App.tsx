@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import axios from 'axios';
 import AJAX from '../config';
+import PUT from '../../../api/PUT';
 
 import Overview from './Overview';
 import Questions from './Questions';
@@ -24,6 +25,7 @@ const App = (props: any) => {
       <Questions/>
       <Ratings/>
       <RelatedItems/>
+
     </div>
   );
 };
