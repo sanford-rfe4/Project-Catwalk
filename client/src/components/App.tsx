@@ -6,13 +6,13 @@ import Questions from './Questions';
 import Ratings from './Ratings';
 import RelatedItems from './RelatedItems';
 
-let getOverview = GET.overview.getOverview;
+//let getOverview = GET.overview.getOverview;
 
 const App = (props: any) => {
 
-  useEffect(() => {
-    getOverview();
-  }, [])
+  // useEffect(() => {
+  //   getOverview();
+  // }, [])
 
   return (
     <div>
