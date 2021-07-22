@@ -5,7 +5,7 @@ const GET = {
   overview: {
     // Gets all products
     getOverview: function() {
-      axios.get(AJAX.URL + 'products', {
+      axios.get(AJAX.URL + '/products', {
         headers: {
           'Authorization': `${AJAX.API_KEY}`
         }
