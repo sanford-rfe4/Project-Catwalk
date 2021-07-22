@@ -7,6 +7,7 @@ const header = {
 
 const PUT = {
   reviews: {
+    // mark a review as helpful
     helpful: function (review_id: number) {
       axios
         .put(
@@ -21,6 +22,7 @@ const PUT = {
           console.log("bye friends");
         });
     },
+    // report question as inappropriate
     report: function (review_id: number) {
       axios
         .put(
@@ -39,6 +41,7 @@ const PUT = {
     },
   },
   questions: {
+    // mark a question as helpful
     helpful: function (question_id: number) {
       axios
         .put(
@@ -55,6 +58,7 @@ const PUT = {
           console.log("bye friends");
         });
     },
+    // report a question as inappropriate
     report: function (question_id: number) {
       axios
         .put(
@@ -73,6 +77,7 @@ const PUT = {
     },
   },
   answers: {
+    // mark an answer as helpful
     helpful: function (answer_id: number) {
       axios
         .put(
@@ -89,6 +94,7 @@ const PUT = {
           console.log("bye friends");
         });
     },
+    // report an answer as inappropriate
     report: function (answer_id: number) {
       axios.put(
         AJAX.URL + `/qa/answers/${answer_id}/report`,
