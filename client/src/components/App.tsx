@@ -6,12 +6,15 @@ import Questions from './Questions';
 import Ratings from './Ratings';
 import RelatedItems from './RelatedItems';
 
-let getOverview = GET.overview.getOverview;
+let getProducts = GET.products.getProducts;
+let getProductById = GET.products.getProductById;
+let getProductStylesById = GET.products.getProductStylesById;
+let getRelatedProductsById = GET.products.getRelatedProductsById;
 
 const App = (props: any) => {
 
   useEffect(() => {
-    getOverview();
+    getRelatedProductsById(19100);
   }, [])
 
   return (
