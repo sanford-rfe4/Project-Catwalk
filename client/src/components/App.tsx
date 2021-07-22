@@ -13,6 +13,7 @@ let getRelatedProductsById = GET.products.getRelatedProductsById;
 let getSortedProductReviews = GET.reviews.getSortedProductReviews;
 let getProductReviewMetaDataById = GET.reviews.getProductReviewMetaDataById;
 let getProductQuestionsById = GET.questions.getProductQuestionsById;
+let getAnswersForQuestionsByQuestionId = GET.questions.getAnswersForQuestionsByQuestionId;
 
 const App = (props: any) => {
 
@@ -20,6 +21,7 @@ const App = (props: any) => {
     getProductReviewMetaDataById(19100);
     getRelatedProductsById(19100);
     getProductQuestionsById(19100, 1, 20);
+    getAnswersForQuestionsByQuestionId(123956);
   }, [])
 
   return (

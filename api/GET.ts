@@ -105,6 +105,7 @@ const GET = {
     }
   },
   questions: {
+    // Gets the questions for a specific product.
     getProductQuestionsById: async function(id: Number, page: Number = 1, count: Number = 5) {
       try {
         let result = await axios.get(AJAX.URL + '/qa/questions', {
@@ -119,6 +120,24 @@ const GET = {
         return result.data;
       } catch(err) {
         console.log('Could not retrieve product questions.');
+        throw err;
+      }
+    },
+
+    // Gets the answers for a specific question.
+    getAnswersForQuestionsByQuestionId: async function(question_id: Number, page: Number = 1, count: Number = 5) {
+      try {
+        let result = await axios.get(AJAX.URL + '/qa/questions/' + question_id + '/answers', {
+          params: {
+            page: page,
+            count: count
+          },
+          headers: header
+        });
+        console.log(result.data);
+        return result.data;
+      } catch(err) {
+        console.log('Could not find answers for question.');
         throw err;
       }
     }
