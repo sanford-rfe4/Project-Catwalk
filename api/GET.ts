@@ -4,7 +4,7 @@ import AJAX from '../client/src/config';
 const GET = {
   overview: {
     // Gets all products
-    getOverview: function() {
+    getProducts: function() {
       axios.get(AJAX.URL + '/products', {
         headers: {
           'Authorization': `${AJAX.API_KEY}`
