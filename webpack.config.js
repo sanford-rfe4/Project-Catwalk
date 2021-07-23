@@ -5,7 +5,7 @@ module.exports = {
   entry: './client/src/index.tsx',
   output: {
     path: __dirname + '/public',
-    // filename: 'bundle.js'
+    filename: 'bundle.js'
   },
   module: {
     rules: [
@@ -27,7 +27,7 @@ module.exports = {
   devtool: 'source-map',
   plugins: [
     new HtmlWebpackPlugin({
-      template: 'public/index.html',
+      template: 'client/index.html',
     })
   ]
 };

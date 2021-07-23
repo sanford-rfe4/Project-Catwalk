@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import '../styles.css';
+import '../styles/styles.css';
 
 import Overview from './Overview';
 import Questions from './Questions';
