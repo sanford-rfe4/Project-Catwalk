@@ -7,6 +7,7 @@ import RelatedItems from './RelatedItems';
 
 const App = (props: any) => {
 
+  // this useEffect hook is the same as componentDidMount
   useEffect(() => {
     console.log('componentDidMount');
   }, [])

@@ -22,7 +22,7 @@ const PUT = {
           console.log("bye friends");
         });
     },
-    // report question as inappropriate
+    // report a review as inappropriate
     report: function (review_id: number) {
       axios
         .put(
