@@ -5,6 +5,7 @@ module.exports = {
   entry: './client/src/index.tsx',
   output: {
     path: __dirname + '/public',
+    filename: 'bundle.js'
   },
   module: {
     rules: [
