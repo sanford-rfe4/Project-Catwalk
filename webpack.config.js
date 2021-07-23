@@ -16,7 +16,12 @@ module.exports = {
           extensions: ['.ts', '.tsx', '.js', '.json'],
         },
         use: 'ts-loader',
-      }
+      },
+      {
+        test: /\.css$/i,
+        exclude: /node_modules/,
+        use: ['style-loader', 'css-loader'],
+      },
     ]
   },
   devtool: 'source-map',
