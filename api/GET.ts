@@ -17,7 +17,7 @@ const GET = {
           },
           headers: header
         });
-        console.log(results.data);
+        // console.log(results.data);
         return results.data;
       } catch(err) {
         console.log('Items not found.');
@@ -31,7 +31,7 @@ const GET = {
         let result = await axios.get(AJAX.URL + '/products/' + id, {
           headers: header
         });
-        console.log(result.data);
+        // console.log(result.data);
         return result.data;
       } catch(err) {
         console.log('Item not found.');
@@ -45,7 +45,7 @@ const GET = {
         let result = await axios.get(AJAX.URL + '/products/' + id + '/styles', {
           headers: header
         });
-        console.log(result.data);
+        // console.log(result.data);
         return result.data;
       } catch(err) {
         console.log('Item not found.');
@@ -59,7 +59,7 @@ const GET = {
         let result = await axios.get(AJAX.URL + '/products/' + id + '/related', {
           headers: header
         });
-        console.log(result.data);
+        // console.log(result.data);
         return result.data;
       } catch(err) {
         console.log('Item not found.');
@@ -80,9 +80,10 @@ const GET = {
           },
           headers: header
         });
-        console.log(result.data);
+        // console.log(result.data);
         return result.data;
       } catch(err) {
+        console.log('reviews not found');
         throw err;
       }
     },
@@ -96,7 +97,7 @@ const GET = {
           },
           headers: header
         });
-        console.log(result.data);
+        // console.log(result.data);
         return result.data;
       } catch(err) {
         console.log("Couldn't retrieve meta data.");
@@ -116,7 +117,7 @@ const GET = {
           },
           headers: header
         });
-        console.log(result.data);
+        // console.log(result.data);
         return result.data;
       } catch(err) {
         console.log('Could not retrieve product questions.');
@@ -134,7 +135,7 @@ const GET = {
           },
           headers: header
         });
-        console.log(result.data);
+        // console.log(result.data);
         return result.data;
       } catch(err) {
         console.log('Could not find answers for question.');
