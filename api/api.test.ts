@@ -67,7 +67,7 @@ describe('GET methods', () => {
     });
   });
 
-  describe('Cart', () => {
+  describe('returns an array when getCart is invoked', () => {
     it('getCart', async () => {
       const data = await GET.cart.getCart();
       expect(Array.isArray(data)).toBe(true);

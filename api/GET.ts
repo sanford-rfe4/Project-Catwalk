@@ -150,7 +150,7 @@ const GET = {
         let result = await axios.get(AJAX.URL + '/cart', {
           headers: header
         });
-        console.log(result.data);
+        // console.log(result.data);
         return result.data;
       } catch(err) {
         console.log('Could not retrieve cart.')
