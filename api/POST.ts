@@ -5,7 +5,7 @@ const headers = {
   'Authorization': `${AJAX.API_KEY}`
 }
 const POST = {
-  
+
   postReview: function (body: object) {
     axios.post(AJAX.URL + '/reviews', body, {headers})
     .then((res) => {
@@ -13,6 +13,7 @@ const POST = {
     })
     .catch((err) => {
       console.log('Error:', err);
+      throw err;
     })
   },
   postQuestion: function(body: object) {
@@ -22,6 +23,7 @@ const POST = {
     })
     .catch((err) => {
       console.log('Error:', err);
+      throw err;
     })
   },
   postAnswer: function(id: Number, body: object) {
@@ -31,6 +33,7 @@ const POST = {
     })
     .catch((err) => {
       console.log('Error:', err);
+      throw err;
     })
 
   },
@@ -41,6 +44,7 @@ const POST = {
     })
     .catch((err) => {
       console.log('Error:', err);
+      throw err;
     })
 
   },
@@ -51,6 +55,7 @@ const POST = {
     })
     .catch((err) => {
       console.log('Error:', err);
+      throw err;
     })
 
   }
