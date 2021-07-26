@@ -5,6 +5,7 @@ module.exports = {
   entry: './client/src/index.tsx',
   output: {
     path: __dirname + '/public',
+    filename: 'bundle.js'
   },
   module: {
     rules: [
@@ -15,13 +16,18 @@ module.exports = {
           extensions: ['.ts', '.tsx', '.js', '.json'],
         },
         use: 'ts-loader',
-      }
+      },
+      {
+        test: /\.css$/i,
+        exclude: /node_modules/,
+        use: ['style-loader', 'css-loader'],
+      },
     ]
   },
   devtool: 'source-map',
   plugins: [
     new HtmlWebpackPlugin({
-      template: 'public/index.html',
+      template: 'client/index.html',
     })
   ]
 };

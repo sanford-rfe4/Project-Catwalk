@@ -1,17 +1,16 @@
 import React, { useEffect } from 'react';
-import GET from '../../../api/GET';
+import '../styles/styles.css';
 
 import Overview from './Overview';
 import Questions from './Questions';
 import Ratings from './Ratings';
 import RelatedItems from './RelatedItems';
 
-let getOverview = GET.overview.getOverview;
-
 const App = (props: any) => {
 
+  // this useEffect hook is the same as componentDidMount
   useEffect(() => {
-    getOverview();
+    console.log('componentDidMount');
   }, [])
 
   return (
@@ -21,6 +20,7 @@ const App = (props: any) => {
       <Questions/>
       <Ratings/>
       <RelatedItems/>
+
     </div>
   );
 };
