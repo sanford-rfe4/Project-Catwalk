@@ -1,6 +1,5 @@
 import React, {useEffect} from 'react';
 import POST from '../../../api/POST';
-
 // let postQuestion = POST.postQuestion;
 // var data = {
 //         'body': 'Will this second question post on product 19000?',
