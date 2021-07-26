@@ -1,5 +1,6 @@
 // DOCS: https://jestjs.io/docs/expect
 import GET from './GET';
+import POST from './POST';
 
 describe('GET methods', () => {
 
@@ -76,7 +77,19 @@ describe('GET methods', () => {
 });
 
 describe('POST methods', () => {
-
+  it('postReview', async () => {
+    // POST.postReview({
+    //   product_id: '',
+    //   rating: 1,
+    //   summary: '',
+    //   body: '',
+    //   recommend: true,
+    //   name: '',
+    //   email: '',
+    //   photos: ['', '', ''],
+    //   characteristics: {}
+    // })
+  })
 });
 
 describe('PUT methods', () => {

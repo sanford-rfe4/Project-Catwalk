@@ -4,9 +4,46 @@ import AJAX from '../client/src/config';
 const headers = {
   'Authorization': `${AJAX.API_KEY}`
 }
+
+interface Review {
+  product_id: String,
+  rating: Number,
+  summary: String,
+  body: String,
+  recommend: Boolean,
+  name: String,
+  email: String,
+  photos: String[]
+  characteristics: Object
+}
+
+interface Question {
+  body: String,
+  name: String,
+  email: String,
+  product_id: Number
+}
+
+interface Answer {
+  body: String,
+  name: String,
+  email: String,
+  photos: String[]
+}
+
+interface Cart {
+  sku_id: Number
+}
+
+interface Interaction {
+  element: String,
+  widget: String,
+  time: String
+}
+
 const POST = {
 
-  postReview: function (body: object) {
+  postReview: function (body: Review) {
     axios.post(AJAX.URL + '/reviews', body, {headers})
     .then((res) => {
       console.log("Successful Review Post!");
@@ -16,7 +53,7 @@ const POST = {
       throw err;
     })
   },
-  postQuestion: function(body: object) {
+  postQuestion: function(body: Question) {
     axios.post(AJAX.URL + '/qa/questions', body, {headers})
     .then((res) => {
       console.log("Successful Question Post!");
@@ -26,8 +63,8 @@ const POST = {
       throw err;
     })
   },
-  postAnswer: function(id: Number, body: object) {
-    axios.post(AJAX.URL + '/qa/questions/' + id + '/answers', body, {headers})
+  postAnswer: function(question_id: Number, body: Answer) {
+    axios.post(AJAX.URL + '/qa/questions/' + question_id + '/answers', body, {headers})
     .then((res) => {
       console.log("Successful Answer Post!");
     })
@@ -37,7 +74,7 @@ const POST = {
     })
 
   },
-  addToCart: function(body: object) {
+  addToCart: function(body: Cart) {
     axios.post(AJAX.URL + '/cart', body, {headers})
     .then((res) => {
       console.log("Successful Add to Cart!");
@@ -48,7 +85,7 @@ const POST = {
     })
 
   },
-  postInteraction: function(body: object) {
+  postInteraction: function(body: Interaction) {
     axios.post(AJAX.URL + '/interactions', body, {headers})
     .then((res) => {
       console.log("Successful Interaction Post!");
