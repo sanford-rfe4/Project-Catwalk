@@ -20,7 +20,6 @@ const App = (props: any) => {
       <Questions/>
       <Ratings/>
       <RelatedItems/>
-
     </div>
   );
 };
