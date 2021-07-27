@@ -14,20 +14,24 @@ const moment = require('moment');
 // }
 const ReviewList = (props: any) => {
   const [Reviews, setReviews] = useState([]);
-
+  const [click, setClick] = useState(false);
   useEffect(() => {
     fetchReviews();
   }, [])
 
+  useEffect(() => {
+    fetchReviews();
+  }, [click])
+
   const fetchReviews = async () => {
     var fetchedReviews = await GET.reviews.getSortedProductReviews(20000);
-    console.log(fetchedReviews.results[0].date);
+    console.log(fetchedReviews.results);
     let mapped = fetchedReviews.results.map((review: any) => (
     <React.Fragment>
     <div>Stars: {review.rating} Reviewer: {review.reviewer_name} Created At: {moment(review.date).format('MMMM Do YYYY')}</div>
     <div>{review.summary}</div>
     <div>{review.body}</div>
-    <HelpfulOrReport value={review.helpfulness}/>
+    <HelpfulOrReport index={review.review_id} value={review.helpfulness} fetch={setClick}/>
     </React.Fragment>
     ));
     setReviews(mapped);
