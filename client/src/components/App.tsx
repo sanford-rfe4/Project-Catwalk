@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../styles/styles.css';
 
 import Overview from './Overview';
@@ -15,12 +15,10 @@ const App = (props: any) => {
 
   return (
     <div>
-      <h1>App</h1>
       <Overview/>
       <Questions/>
       <Ratings/>
       <RelatedItems/>
-
     </div>
   );
 };
