@@ -13,8 +13,7 @@ const HelpfulOrReport = (props: any) => {
    }
   }
   const Report = () => {
-    PUT.reviews.report(props.index);
-    props.setClick(true);
+    PUT.reviews.report(props.index, props.handleClick)
   }
 
   return (

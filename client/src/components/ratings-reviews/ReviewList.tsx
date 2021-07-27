@@ -19,19 +19,18 @@ const ReviewList = (props: any) => {
     fetchReviews();
   }, [])
 
-  useEffect(() => {
+  const handleClick = () => {
     fetchReviews();
-  }, [click])
+  }
 
   const fetchReviews = async () => {
     var fetchedReviews = await GET.reviews.getSortedProductReviews(20000);
-    console.log(fetchedReviews.results);
     let mapped = fetchedReviews.results.map((review: any) => (
     <React.Fragment>
     <div>Stars: {review.rating} Reviewer: {review.reviewer_name} Created At: {moment(review.date).format('MMMM Do YYYY')}</div>
     <div>{review.summary}</div>
     <div>{review.body}</div>
-    <HelpfulOrReport index={review.review_id} value={review.helpfulness} fetch={setClick}/>
+    <HelpfulOrReport index={review.review_id} value={review.helpfulness} handleClick={handleClick}/>
     </React.Fragment>
     ));
     setReviews(mapped);

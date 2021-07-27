@@ -23,7 +23,7 @@ const PUT = {
         });
     },
     // report a review as inappropriate
-    report: function (review_id: number) {
+    report: function (review_id: number, callback: Function) {
       axios
         .put(
           AJAX.URL + `/reviews/${review_id}/report`,
@@ -33,7 +33,7 @@ const PUT = {
           }
         )
         .then((response) => {
-          console.log("howdy friends");
+          callback();
         })
         .catch((err) => {
           console.log("bye friends");
