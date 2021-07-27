@@ -4,14 +4,15 @@ import '../../styles/modal.css'
 interface modal {
   title: string,
   body: string,
-  buttonText: string
-  modalDisplay: any
-  setModal: any
-  textBox: boolean
+  buttonText: string,
+  modalDisplay: any,
+  setModal: any,
+  textBox: boolean,
+  submitFunc: Function
 }
 
 const Modal = (props: modal) => {
-  let {title, body, buttonText, modalDisplay, setModal, textBox} = props;
+  let {title, body, buttonText, modalDisplay, setModal, textBox, submitFunc} = props;
 
   let [display, setDisplay] = useState(modalDisplay);
   let [input, setInput] = useState('');
@@ -34,7 +35,8 @@ const Modal = (props: modal) => {
     setDisplay('none');
     setModal(false);
     setInput('');
-    alert('Thank You!');
+    submitFunc();
+    alert('Thank you!');
   }
 
   const onTextChange = (e: any) => {
