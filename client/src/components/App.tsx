@@ -15,7 +15,6 @@ const App = (props: any) => {
 
   return (
     <div>
-      <h1>App</h1>
       <Overview/>
       <Questions/>
       <Ratings/>
