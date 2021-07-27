@@ -43,9 +43,10 @@ interface Interaction {
 
 const POST = {
 
-  postReview: function (body: Review) {
+  postReview: function (body: Review, callback: Function = () => {}) {
     axios.post(AJAX.URL + '/reviews', body, {headers})
     .then((res) => {
+      callback();
       console.log("Successful Review Post!");
     })
     .catch((err) => {
@@ -53,9 +54,10 @@ const POST = {
       throw err;
     })
   },
-  postQuestion: function(body: Question) {
+  postQuestion: function(body: Question, callback: Function = () => {}) {
     axios.post(AJAX.URL + '/qa/questions', body, {headers})
     .then((res) => {
+      callback();
       console.log("Successful Question Post!");
     })
     .catch((err) => {
@@ -63,9 +65,10 @@ const POST = {
       throw err;
     })
   },
-  postAnswer: function(question_id: Number, body: Answer) {
+  postAnswer: function(question_id: Number, body: Answer, callback: Function = () => {}) {
     axios.post(AJAX.URL + '/qa/questions/' + question_id + '/answers', body, {headers})
     .then((res) => {
+      callback();
       console.log("Successful Answer Post!");
     })
     .catch((err) => {
@@ -74,9 +77,10 @@ const POST = {
     })
 
   },
-  addToCart: function(body: Cart) {
+  addToCart: function(body: Cart, callback: Function = () => {}) {
     axios.post(AJAX.URL + '/cart', body, {headers})
     .then((res) => {
+      callback();
       console.log("Successful Add to Cart!");
     })
     .catch((err) => {
@@ -85,9 +89,10 @@ const POST = {
     })
 
   },
-  postInteraction: function(body: Interaction) {
+  postInteraction: function(body: Interaction, callback: Function = () => {}) {
     axios.post(AJAX.URL + '/interactions', body, {headers})
     .then((res) => {
+      callback();
       console.log("Successful Interaction Post!");
     })
     .catch((err) => {

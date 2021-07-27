@@ -8,7 +8,7 @@ const header = {
 const PUT = {
   reviews: {
     // mark a review as helpful
-    helpful: function (review_id: number) {
+    helpful: function (review_id: number, callback: Function = () => {}) {
       axios
         .put(
           AJAX.URL + `/reviews/${review_id}/helpful`,
@@ -16,6 +16,7 @@ const PUT = {
           { headers: header }
         )
         .then((response) => {
+          callback();
           console.log("howdy friends");
         })
         .catch((err) => {
@@ -23,7 +24,7 @@ const PUT = {
         });
     },
     // report a review as inappropriate
-    report: function (review_id: number) {
+    report: function (review_id: number, callback: Function = () => {}) {
       axios
         .put(
           AJAX.URL + `/reviews/${review_id}/report`,
@@ -33,6 +34,7 @@ const PUT = {
           }
         )
         .then((response) => {
+          callback();
           console.log("howdy friends");
         })
         .catch((err) => {
@@ -42,7 +44,7 @@ const PUT = {
   },
   questions: {
     // mark a question as helpful
-    helpful: function (question_id: number) {
+    helpful: function (question_id: number, callback: Function = () => {}) {
       axios
         .put(
           AJAX.URL + `/qa/questions/${question_id}/helpful`,
@@ -52,6 +54,7 @@ const PUT = {
           }
         )
         .then((response) => {
+          callback();
           console.log("howdy friends");
         })
         .catch((err) => {
@@ -59,7 +62,7 @@ const PUT = {
         });
     },
     // report a question as inappropriate
-    report: function (question_id: number) {
+    report: function (question_id: number, callback: Function = () => {}) {
       axios
         .put(
           AJAX.URL + `/qa/questions/${question_id}/report`,
@@ -69,6 +72,7 @@ const PUT = {
           }
         )
         .then((response) => {
+          callback();
           console.log("howdy friends");
         })
         .catch((err) => {
@@ -78,7 +82,7 @@ const PUT = {
   },
   answers: {
     // mark an answer as helpful
-    helpful: function (answer_id: number) {
+    helpful: function (answer_id: number, callback: Function = () => {}) {
       axios
         .put(
           AJAX.URL + `/qa/answers/${answer_id}/helpful`,
@@ -88,6 +92,7 @@ const PUT = {
           }
         )
         .then((response) => {
+          callback();
           console.log("howdy friends");
         })
         .catch((err) => {
@@ -95,7 +100,7 @@ const PUT = {
         });
     },
     // report an answer as inappropriate
-    report: function (answer_id: number) {
+    report: function (answer_id: number, callback: Function = () => {}) {
       axios.put(
         AJAX.URL + `/qa/answers/${answer_id}/report`,
         {},
@@ -104,7 +109,8 @@ const PUT = {
         }
       )
       .then((response) => {
-        console.log('howdy friends');
+        callback();
+        console.log("howdy friends");
       })
       .catch((err) => {
         console.log('bye friends');
