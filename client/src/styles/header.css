@@ -1,0 +1,32 @@
+/* CSS HEX */
+/* --antique-ruby: #8a022bff;
+--melon: #ffb79dff;
+--congo-pink: #fa9a93ff;
+--baby-blue: #70cbf2ff;
+--persian-indigo: #2b157cff; */
+
+/* CSS HSL */
+/* --antique-ruby: hsla(342, 97%, 27%, 1);
+--melon: hsla(16, 100%, 81%, 1);
+--congo-pink: hsla(4, 91%, 78%, 1);
+--baby-blue: hsla(198, 83%, 69%, 1);
+--persian-indigo: hsla(253, 71%, 28%, 1); */
+
+
+#header{
+  display: flex;
+  align-items: center;
+  border: solid;
+  border-width: thin;
+  background-color: white;
+  width: 1300px;
+  height: 80px;
+  margin: auto;
+  padding: 10px;
+}
+
+#logo{
+  font-family: cursive;
+  margin-left: 20px;
+  color:black;
+}

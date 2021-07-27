@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import Modal from './reusable/Modal';
+import Header from './overview/Header';
 
 const Overview = (props: any) => {
 
@@ -13,6 +14,7 @@ const Overview = (props: any) => {
 
   return (
     <div>
+      <Header/>
       <button onClick={() => setShowModal(!showModal)}>Open Modal</button>
       <Modal
         title={'Question'}
