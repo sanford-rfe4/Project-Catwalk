@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
 import Modal from './reusable/Modal';
-import Stars from './reusable/Stars';
 
 const Overview = (props: any) => {
 
@@ -14,7 +13,7 @@ const Overview = (props: any) => {
 
   return (
     <div>
-      {/* <button onClick={() => setShowModal(!showModal)}>Open Modal</button> */}
+      <button onClick={() => setShowModal(!showModal)}>Open Modal</button>
       <Modal
         title={'Question'}
         body={'Please write your question in the space below.'}
@@ -24,7 +23,6 @@ const Overview = (props: any) => {
         textBox={true}
         submitFunc={() => 'hi'}
       />
-      {/* <Stars ratingNum={3.5}/> */}
     </div>
   );
 };
