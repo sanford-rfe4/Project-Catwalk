@@ -17,7 +17,7 @@ const App = (props: any) => {
   return (
     <div>
       <Overview/>
-      <Questions/>
+      <Questions productId={19090}/>
       <Ratings/>
       <RelatedItems/>
     </div>
