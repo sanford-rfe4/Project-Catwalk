@@ -6,7 +6,9 @@ import ProductInfo from './overview/ProductInfo';
 
 const Overview = (props: any) => {
 
-  let [selectedProduct, setSelectedProduct] = useState(props.selectedProduct);
+  // let [selectedProduct, setSelectedProduct] = useState(props.selectedProduct);
+
+  let {selectedProduct} = props;
 
   let [showModal, setShowModal] = useState(false);
   let [modalDisplay, setModalDisplay] = useState("none");
@@ -17,7 +19,7 @@ const Overview = (props: any) => {
 
   return (
     <div>
-      <ProductInfo/>
+      <ProductInfo product={selectedProduct}/>
       <Stars ratingNum={3.3} />
       <button onClick={() => setShowModal(!showModal)}>Open Modal</button>
       <Modal
