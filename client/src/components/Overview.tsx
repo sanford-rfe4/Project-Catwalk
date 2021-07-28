@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from 'react';
 
 import Modal from './reusable/Modal';
+import Stars from './reusable/Stars';
+import ProductInfo from './overview/ProductInfo';
 
 const Overview = (props: any) => {
+
+  let [selectedProduct, setSelectedProduct] = useState(props.selectedProduct);
 
   let [showModal, setShowModal] = useState(false);
   let [modalDisplay, setModalDisplay] = useState('none');
@@ -13,11 +17,13 @@ const Overview = (props: any) => {
 
   return (
     <div>
+      <ProductInfo/>
+      <Stars ratingNum={3.3} />
       <button onClick={() => setShowModal(!showModal)}>Open Modal</button>
       <Modal
         title={'Question'}
         body={'Please write your question in the space below.'}
-        buttonText={'close'}
+        buttonText={"close"}
         modalDisplay={modalDisplay}
         setModal={setShowModal}
         textBox={true}
