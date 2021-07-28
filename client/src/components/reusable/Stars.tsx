@@ -42,11 +42,7 @@ const Stars = (props: stars) => {
   return (
     <div className='stars'>
       {stars.map((star) => {
-<<<<<<< HEAD
         return <img className='star' src={star}></img>;
-=======
-        return <img className="star" src={star}></img>;
->>>>>>> stars component now completed
       })}
     </div>
   );
