@@ -69,7 +69,7 @@ const GET = {
   },
   reviews: {
     // gets reviews for a specific product. can sort by "newest", "helpful", or "relevant".
-    getSortedProductReviews: async function(id: Number, page: Number = 1, count: Number = 5, sort: String = 'newest') {
+    getSortedProductReviews: async function(id: Number, page: Number = 1, count: Number = 5, sort: String = 'relevant') {
       try {
         let result = await axios.get(AJAX.URL + '/reviews', {
           params: {
