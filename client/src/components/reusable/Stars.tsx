@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import "../../styles/stars.css";
+import React, { useState, useEffect } from 'react';
+import '../../styles/stars.css';
 
 interface stars {
   ratingNum: number;
@@ -9,11 +9,11 @@ const Stars = (props: stars) => {
   let [stars, setStars] = useState<string[]>([]);
 
   let rating: number = props.ratingNum;
-  let goldStar: string = "client/assets/images/stars/filled-star.svg";
-  let outlineStar: string = "client/assets/images/stars/unfilled-star.svg";
-  let halfStar: string = "client/assets/images/stars/half-filled.svg";
-  let quarterStar: string = "client/assets/images/stars/quarter-filled.svg";
-  let mostlyFilled: string = "client/assets/images/stars/mostly-filled.svg";
+  let goldStar: string = 'client/assets/images/stars/filled-star.svg';
+  let outlineStar: string = 'client/assets/images/stars/unfilled-star.svg';
+  let halfStar: string = 'client/assets/images/stars/half-filled.svg';
+  let quarterStar: string = 'client/assets/images/stars/quarter-filled.svg';
+  let mostlyFilled: string = 'client/assets/images/stars/mostly-filled.svg';
   let starArr: string[] = [];
 
   for (let i = 0; i < 5; i++) {
@@ -39,9 +39,9 @@ const Stars = (props: stars) => {
   }, []);
 
   return (
-    <div className="stars">
+    <div className='stars'>
       {stars.map((star) => {
-        return <img className="star" src={star}></img>;
+        return <img className='star' src={star}></img>;
       })}
     </div>
   );
