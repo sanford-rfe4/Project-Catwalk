@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="37.4 170.944 205.564 203.728" xmlns="http://www.w3.org/2000/svg" xmlns:bx="https://boxy-svg.com">
+  <defs>
+    <mask id="mask-0">
+      <rect x="288.465" y="328.456" width="92.735" height="182.225" style="fill: rgb(244, 244, 244); isolation: isolate;" transform="matrix(-0.8059, -0.592051, 0.592051, -0.8059, 314.597412, 782.994019)"/>
+    </mask>
+  </defs>
+  <path d="M 139.933 201.323 L 158.4 254.791 L 214.635 255.944 L 169.814 290.142 L 186.101 344.322 L 139.933 311.99 L 93.765 344.322 L 110.052 290.142 L 65.232 255.944 L 121.466 254.791 Z" style="fill-rule: nonzero; stroke-width: 3px; paint-order: fill; stroke: rgb(0, 0, 0); fill: rgb(243, 243, 243);" transform="matrix(-0.8059, 0.592051, -0.592051, -0.8059, 414.230835, 409.842407)"/>
+  <path d="M 261.211 131.175 L 279.678 184.643 L 335.913 185.796 L 291.092 219.994 L 307.379 274.174 L 261.211 241.842 L 215.043 274.174 L 231.33 219.994 L 186.509 185.796 L 242.744 184.643 Z" style="fill: rgb(255, 225, 31); fill-rule: nonzero; paint-order: fill; stroke: rgb(0, 0, 0); stroke-width: 3px; mask: url(#mask-0);" transform="matrix(-0.8059, 0.592051, -0.592051, -0.8059, 470.933899, 281.477539)" bx:shape="star 261.211 210.223 78.546 79.048 0.4 5 1@bbc6e91d"/>
+</svg>
