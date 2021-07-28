@@ -9,6 +9,7 @@ const Stars = (props: stars) => {
   let [stars, setStars] = useState<string[]>([]);
 
   let rating: number = props.ratingNum;
+
   let goldStar: string = 'client/assets/images/stars/filled-star.svg';
   let outlineStar: string = 'client/assets/images/stars/unfilled-star.svg';
   let halfStar: string = 'client/assets/images/stars/half-filled.svg';
@@ -41,7 +42,11 @@ const Stars = (props: stars) => {
   return (
     <div className='stars'>
       {stars.map((star) => {
+<<<<<<< HEAD
         return <img className='star' src={star}></img>;
+=======
+        return <img className="star" src={star}></img>;
+>>>>>>> stars component now completed
       })}
     </div>
   );

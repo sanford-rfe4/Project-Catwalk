@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
 import Modal from './reusable/Modal';
 import Stars from './reusable/Stars';
@@ -9,10 +9,10 @@ const Overview = (props: any) => {
   let [selectedProduct, setSelectedProduct] = useState(props.selectedProduct);
 
   let [showModal, setShowModal] = useState(false);
-  let [modalDisplay, setModalDisplay] = useState('none');
+  let [modalDisplay, setModalDisplay] = useState("none");
 
   useEffect(() => {
-    showModal ? setModalDisplay('block') : setModalDisplay('none');
+    showModal ? setModalDisplay("block") : setModalDisplay("none");
   }, [showModal]);
 
   return (
@@ -27,7 +27,7 @@ const Overview = (props: any) => {
         modalDisplay={modalDisplay}
         setModal={setShowModal}
         textBox={true}
-        submitFunc={() => 'hi'}
+        submitFunc={() => "hi"}
       />
     </div>
   );
