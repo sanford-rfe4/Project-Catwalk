@@ -1,7 +1,11 @@
 import React from 'react';
 
-const ProductInfo = () => {
-  return <div></div>;
+const ProductInfo = (props: any) => {
+  return (
+    <div>
+
+    </div>
+  );
 };
 
 export default ProductInfo;
