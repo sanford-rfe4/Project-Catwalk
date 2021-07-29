@@ -6,15 +6,27 @@ const HelpfulOrReport = (props: any) => {
   const [helpClick, setHelpClick] = useState(false);
 
   const HelpfulClick = () => {
-   if (helpClick === false) {
-   PUT.reviews.helpful(props.index);
+    if (helpClick === false) {
+      if (props.widget === 'Review') {
+        PUT.reviews.helpful(props.index);
+      } else if (props.widget === 'Question') {
+        PUT.questions.helpful(props.index);
+      } else if (props.widget === 'Answer') {
+        PUT.answers.helpful(props.index);
+      }
    setHelpful(helpful + 1);
    setHelpClick(true);
    }
   }
   const Report = () => {
-    PUT.reviews.report(props.index, props.handleClick)
+    if (props.widget === "Review") {
+    PUT.reviews.report(props.index, props.handleClick);
+  } else if (props.widget === 'Answer') {
+    PUT.answers.report(props.index, props.handleClick);
+  } else if (props.widget === 'Question') {
+    PUT.questions.report(props.index, props.handleClick);
   }
+};
 
   return (
       <div>Helpful?
