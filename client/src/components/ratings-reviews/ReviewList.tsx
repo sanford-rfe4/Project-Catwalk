@@ -20,18 +20,18 @@ const ReviewList = (props: any) => {
   const [sort, setSort] = useState('relevant');
 
   useEffect(() => {
-    fetchReviews();
-  }, [])
+    fetchReviews(sort);
+  }, [sort])
 
   const handleClick = () => {
-    fetchReviews();
+    fetchReviews(sort);
   }
-  const itemClick = () => {
-    console.log('hello');
+  const itemClick = (event: any) => {
+    setSort(event.target.innerText);
   }
 
-  const fetchReviews = async () => {
-    var fetchedReviews = await GET.reviews.getSortedProductReviews(20000);
+  const fetchReviews = async (sort: string) => {
+    var fetchedReviews = await GET.reviews.getSortedProductReviews(19093, 1, 5, sort);
     let mapped = fetchedReviews.results.map((review: any) => (
     <React.Fragment>
     <Stars ratingNum={review.rating}/>
@@ -51,7 +51,7 @@ const ReviewList = (props: any) => {
   }
   return (
     <React.Fragment>
-    <div className='Dropdown'>{ReviewsAmount} reviews, sorted by 
+    <div className='Dropdown'>{ReviewsAmount} reviews, sorted by
     <Dropdown
     initial={sort}
     listItems={['relevant', 'newest', 'helpful']}
