@@ -12,7 +12,7 @@ const App = (props: any) => {
   let [currentProduct, setCurrentProduct] = useState({});
 
   const defaultProduct = async () => {
-    let product = await GET.products.getProductById(19100);
+    let product = await GET.products.getProductById(20001);
     setCurrentProduct(product);
   }
 
