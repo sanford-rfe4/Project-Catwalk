@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import Modal from './reusable/Modal';
 import Stars from './reusable/Stars';
+import Header from './overview/Header';
 import ProductInfo from './overview/ProductInfo';
 
 const Overview = (props: any) => {
@@ -17,6 +18,7 @@ const Overview = (props: any) => {
 
   return (
     <div>
+      <Header/>
       <ProductInfo product={selectedProduct}/>
       <button onClick={() => setShowModal(!showModal)}>Open Modal</button>
       <Modal
