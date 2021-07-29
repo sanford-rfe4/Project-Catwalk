@@ -1,36 +1,40 @@
 import React, { useEffect, useState } from 'react';
+import '../../styles/product-info.css';
 import GET from '../../../../api/GET';
 
 import Stars from '../reusable/Stars';
+import StyleSelector from './StyleSelector';
 
 const ProductInfo = (props: any) => {
 
-  let {productId} = props;
+  let {product} = props;
 
   let [productRating, setProductRating] = useState<number>(0);
+  let [productPrice, setProductPrice] = useState('');
+  let [productDiscountPrice, setProductDiscountPrice] = useState(null);
   let [ratings, setRatings] = useState<object[]>([]);
   let [ratingExists, setRatingExists] = useState<boolean>(false);
+  let [styles, setStyles] = useState([]);
 
   const findReviews = async () => {
-    let product = await props.productId
-    let response = await GET.reviews.getSortedProductReviews(product);
-    let data = response;
-    setRatings(data.results)
+    let response = await GET.reviews.getSortedProductReviews(props.product.id);
+    setRatings(response.results);
+  }
+
+  const findProductStyles = async () => {
+    let styles = await GET.products.getProductStylesById(product.id);
+    setStyles(styles.results);
   }
 
   const findRatings = async (ratings: any) => {
       let totalRatings = 0;
       let sumRatings = 0;
-
       for (let i = 0; i < ratings.length; i++) {
         totalRatings++;
         sumRatings += ratings[i]['rating'];
       }
-
       setProductRating(sumRatings / totalRatings);
   }
-
-  // console.log(productRating);
 
   const renderStars = () => {
     if (ratingExists) {
@@ -41,10 +45,12 @@ const ProductInfo = (props: any) => {
   }
 
   useEffect(() => {
-    if (productId) {
+    if (product.id) {
       findReviews();
+      findProductStyles();
+      setProductPrice(product.default_price);
     }
-  }, [productId]);
+  }, [product]);
 
   useEffect(() => {
     if (ratings.length !== 0) {
@@ -55,20 +61,33 @@ const ProductInfo = (props: any) => {
     }
   }, [ratings])
 
+  console.log(styles);
 
   return (
     <div id='product-info'>
-      <div id='product-star-rating'>
-        {renderStars()}
+      <div id='product-star-rating-div'>
+        <span id='product-star-rating'>{renderStars()}</span><span><a id='read-reviews' href="#">Read all reviews</a></span>
       </div>
       <div id='product-category'>
-
+        {product.category !== undefined ? product.category.toUpperCase() : ''}
       </div>
       <div id='product-title'>
-
+        {product.name}
       </div>
       <div id='product-price'>
-
+        {productDiscountPrice !== null ?
+        <div>
+          <span className='slashed-price'>${productPrice}</span>
+          <span> ${productDiscountPrice}</span>
+        </div> :
+        '$' + productPrice}
+      </div>
+      <div id='product-styles-div'>
+        <StyleSelector
+          styles={styles}
+          setStylePrice={setProductPrice}
+          setStyleDiscountPrice={setProductDiscountPrice}
+        />
       </div>
     </div>
   );

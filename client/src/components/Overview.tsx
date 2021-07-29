@@ -17,7 +17,7 @@ const Overview = (props: any) => {
 
   return (
     <div>
-      <ProductInfo productId={selectedProduct.id}/>
+      <ProductInfo product={selectedProduct}/>
       <button onClick={() => setShowModal(!showModal)}>Open Modal</button>
       <Modal
         title={'Question'}
