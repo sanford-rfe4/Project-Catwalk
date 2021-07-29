@@ -1,5 +1,7 @@
 import React, {useEffect} from 'react';
 import POST from '../../../api/POST';
+import ReviewList from './ratings-reviews/ReviewList';
+
 // let postQuestion = POST.postQuestion;
 // var data = {
 //         'body': 'Will this second question post on product 19000?',
@@ -14,7 +16,7 @@ const Ratings = (props: any) => {
   // }, [])
 
   return (
-    <div>Ratings</div>
+    <div><ReviewList/></div>
   );
 };
 
