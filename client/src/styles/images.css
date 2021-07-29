@@ -1,0 +1,23 @@
+.style-thumbnail{
+  width: 60px;
+  height: 60px;
+  border-radius: 100%;
+  cursor: pointer;
+  margin: 3px;
+}
+
+.current-thumbnail{
+  width: 58px;
+  height: 58px;
+  border-radius: 100%;
+  border-style: solid;
+  border-width: 1px;
+  border-color: red;
+  cursor: pointer;
+  margin: 3px;
+}
+
+#thumb-nails{
+  margin-top: 15px;
+  width: 70%;
+}

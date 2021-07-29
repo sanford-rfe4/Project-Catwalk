@@ -1,40 +1,58 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../../styles/images.css';
 
 const StyleSelector = (props: any) => {
 
   let {styles, setStylePrice, setStyleDiscountPrice} = props;
 
-  let [selectedStyle, setSelectedStyle] = useState('(selected style)');
+  let [selectedStyle, setSelectedStyle] = useState('');
+  let [selectedStyleId, setSelectedStyleId] = useState(0);
 
   const setCurrentStyle = (e: any) => {
-    let styleName = e.target.innerHTML
+    let currentlySelected = document.querySelector('.current-thumbnail');
+    if (currentlySelected !== null) {
+      currentlySelected.classList.remove('current-thumbnail');
+    }
+    e.target.classList.add('current-thumbnail');
+
+    let styleName = e.target.attributes[1].value
     let findStyle = styles.find((style: any) => {
       return style.name === styleName;
     })
-    console.log(findStyle);
+
+    setSelectedStyleId(findStyle.id);
     setSelectedStyle(findStyle.name);
     setStylePrice(findStyle.original_price);
     setStyleDiscountPrice(findStyle.sale_price);
   }
 
+  console.log(selectedStyle);
+
+  useEffect(() => {
+    if (styles !== undefined && styles[0] !== undefined) {
+      console.log(styles[0]);
+      setSelectedStyle(styles[0].name)
+      document.querySelector('#img0')?.classList.add('current-thumbnail');
+    }
+  }, [styles]);
 
   return (
     <div>
-      <b>STYLE {'>'}</b> {selectedStyle}
-      <ul>
-        {styles.map((style: any) => {
-          return (
-            <li>
-              <a onClick={setCurrentStyle} href='#'>
-                {style.name}
-                <img className='style-image' src={style.photos[0].thumbnail_url}></img>
-                {console.log(style.photos)}
-              </a>
-            </li>
-          )
-        })}
-      </ul>
+      <b>STYLE {'>  '}</b>  {selectedStyle}
+        <div id='thumb-nails'>
+          {styles.map((style: any, index: number) => {
+            return (
+                <img
+                  onClick={setCurrentStyle}
+                  className='style-thumbnail'
+                  alt={style.name}
+                  src={style.photos[0].thumbnail_url}
+                  key={index}
+                  id={'img' + index}>
+                </img>
+              )
+          })}
+        </div>
     </div>
   );
 }
