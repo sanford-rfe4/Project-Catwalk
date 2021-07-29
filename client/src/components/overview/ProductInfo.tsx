@@ -61,8 +61,6 @@ const ProductInfo = (props: any) => {
     }
   }, [ratings])
 
-  console.log(styles);
-
   return (
     <div id='product-info'>
       <div id='product-star-rating-div'>

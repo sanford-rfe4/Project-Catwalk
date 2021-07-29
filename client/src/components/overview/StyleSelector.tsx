@@ -26,11 +26,8 @@ const StyleSelector = (props: any) => {
     setStyleDiscountPrice(findStyle.sale_price);
   }
 
-  console.log(selectedStyle);
-
   useEffect(() => {
     if (styles !== undefined && styles[0] !== undefined) {
-      console.log(styles[0]);
       setSelectedStyle(styles[0].name)
       document.querySelector('#img0')?.classList.add('current-thumbnail');
     }

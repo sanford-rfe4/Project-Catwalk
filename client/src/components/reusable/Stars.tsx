@@ -42,14 +42,14 @@ const Stars = (props: stars) => {
   }, [rating]);
 
   useEffect(() => {
-    console.log('ratingNum', props.ratingNum);
+    // console.log('ratingNum', props.ratingNum);
     setRating(props.ratingNum);
   }, [props.ratingNum])
 
   return (
     <div className='stars'>
-      {stars.map((star) => {
-        return <img className='star' src={star}></img>;
+      {stars.map((star, index) => {
+        return <img key={index} className='star' src={star}></img>;
       })}
     </div>
   );
