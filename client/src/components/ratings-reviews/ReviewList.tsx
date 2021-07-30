@@ -20,6 +20,7 @@ const ReviewList = (props: any) => {
   const [ReviewsAmount, setReviewsAmount] = useState(0);
   const [sort, setSort] = useState('relevant');
   const [currentReviews, setCurrentReviews] = useState(2);
+  const [noMoreReviews, setNoMoreReviews] = useState(false);
   //console.log(Reviews);
   //console.log(currentReviews);
   useEffect(() => {
@@ -41,18 +42,24 @@ const ReviewList = (props: any) => {
   }
   const reviewPrint = () => {
     var reviews : any = [];
+    if (ReviewsAmount < 2 && !noMoreReviews) {
+      setNoMoreReviews(true);
+    }
+
     for (var i = 0; i < currentReviews; i++) {
-      console.log('hello');
       reviews.push(Reviews[i]);
     }
     return reviews;
   }
   const moreClick = () => {
     setCurrentReviews(currentReviews + 2);
+    if (ReviewsAmount <= currentReviews + 2) {
+      setNoMoreReviews(true);
+    }
   };
 
   const fetchReviews = async (sort: string) => {
-    var fetchedReviews = await GET.reviews.getSortedProductReviews(19093, 1, 5, sort);
+    var fetchedReviews = await GET.reviews.getSortedProductReviews(20000, 1, 5, sort);
     let mapped = fetchedReviews.results.map((review: any) => (
     <div className='review'>
       <div className='header'>
@@ -82,7 +89,7 @@ const ReviewList = (props: any) => {
     itemClick={itemClick}/>
     </div>
     {reviewPrint()}
-      <span><MoreAdd widget='Review' moreClick={moreClick}/></span>
+      <span><MoreAdd widget='Review' moreClick={moreClick} noMoreItems = {noMoreReviews}/></span>
     </React.Fragment>
   )
 };
