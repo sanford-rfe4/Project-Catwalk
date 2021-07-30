@@ -20,3 +20,10 @@
   align-items: center;
   padding: 10px;
 }
+
+.scrollable {
+    margin: 0 auto;
+    height: 350px;
+    width: 600px;
+    overflow: auto;
+}

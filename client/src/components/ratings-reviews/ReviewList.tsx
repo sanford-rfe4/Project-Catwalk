@@ -42,7 +42,7 @@ const ReviewList = (props: any) => {
   }
   const reviewPrint = () => {
     var reviews : any = [];
-    if (ReviewsAmount < 2 && !noMoreReviews) {
+    if (currentReviews < 2 && !noMoreReviews) {
       setNoMoreReviews(true);
     }
 
@@ -59,7 +59,7 @@ const ReviewList = (props: any) => {
   };
 
   const fetchReviews = async (sort: string) => {
-    var fetchedReviews = await GET.reviews.getSortedProductReviews(20000, 1, 5, sort);
+    var fetchedReviews = await GET.reviews.getSortedProductReviews(19093, 1, 5, sort);
     let mapped = fetchedReviews.results.map((review: any) => (
     <div className='review'>
       <div className='header'>
@@ -78,6 +78,9 @@ const ReviewList = (props: any) => {
     </div>
     ));
     setReviewsAmount(mapped.length);
+    if (mapped.length < 2) {
+      setCurrentReviews(mapped.length);
+    }
     setReviews(mapped);
   }
   return (
@@ -88,7 +91,7 @@ const ReviewList = (props: any) => {
     listItems={['relevant', 'newest', 'helpful']}
     itemClick={itemClick}/>
     </div>
-    {reviewPrint()}
+    <div className='scrollable'>{reviewPrint()}</div>
       <span><MoreAdd widget='Review' moreClick={moreClick} noMoreItems = {noMoreReviews}/></span>
     </React.Fragment>
   )
