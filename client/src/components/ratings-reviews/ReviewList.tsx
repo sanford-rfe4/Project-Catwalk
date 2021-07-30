@@ -5,6 +5,7 @@ import POST from '../../../../api/POST';
 import GET from '../../../../api/GET';
 import Stars from '../reusable/Stars';
 import Dropdown from '../reusable/Dropdown';
+import '../../styles/reviews.css';
 const moment = require('moment');
 
 // let postQuestion = POST.postQuestion;
@@ -18,7 +19,9 @@ const ReviewList = (props: any) => {
   const [Reviews, setReviews] = useState([]);
   const [ReviewsAmount, setReviewsAmount] = useState(0);
   const [sort, setSort] = useState('relevant');
-
+  const [currentReviews, setCurrentReviews] = useState(2);
+  //console.log(Reviews);
+  //console.log(currentReviews);
   useEffect(() => {
     fetchReviews(sort);
   }, [sort])
@@ -29,22 +32,43 @@ const ReviewList = (props: any) => {
   const itemClick = (event: any) => {
     setSort(event.target.innerText);
   }
+  const checkRecommend = (recommend: boolean) => {
+    if (recommend === true) {
+      return (
+        <div className='recommend'>&#10003; I recommend this product</div>
+      )
+    }
+  }
+  const reviewPrint = () => {
+    var reviews : any = [];
+    for (var i = 0; i < currentReviews; i++) {
+      console.log('hello');
+      reviews.push(Reviews[i]);
+    }
+    return reviews;
+  }
+  const moreClick = () => {
+    setCurrentReviews(currentReviews + 2);
+  };
 
   const fetchReviews = async (sort: string) => {
     var fetchedReviews = await GET.reviews.getSortedProductReviews(19093, 1, 5, sort);
     let mapped = fetchedReviews.results.map((review: any) => (
-    <React.Fragment>
-    <Stars ratingNum={review.rating}/>
-    <div> Reviewer: {review.reviewer_name} Date Posted: {moment(review.date).format('MMMM Do YYYY')} </div>
-    <div style={{fontWeight: "bold"}}> {review.summary} </div>
-    <div>{review.body}</div>
-    <HelpfulOrReport
-    widget ='Review'
-    index={review.review_id}
-    value={review.helpfulness}
-    handleClick={handleClick}
-    />
-    </React.Fragment>
+    <div className='review'>
+      <div className='header'>
+        <Stars ratingNum={review.rating}/>
+        {review.reviewer_name}, {moment(review.date).format('MMMM Do YYYY')}
+      </div>
+      <div style={{fontWeight: "bold"}}> {review.summary} </div>
+      <div className='reviewBody'>{review.body}</div>
+      {checkRecommend(review.recommend)}
+      <HelpfulOrReport
+      widget ='Review'
+      index={review.review_id}
+      value={review.helpfulness}
+      handleClick={handleClick}
+      />
+    </div>
     ));
     setReviewsAmount(mapped.length);
     setReviews(mapped);
@@ -57,8 +81,8 @@ const ReviewList = (props: any) => {
     listItems={['relevant', 'newest', 'helpful']}
     itemClick={itemClick}/>
     </div>
-    {Reviews}
-      <span><MoreAdd widget='Review'/></span>
+    {reviewPrint()}
+      <span><MoreAdd widget='Review' moreClick={moreClick}/></span>
     </React.Fragment>
   )
 };

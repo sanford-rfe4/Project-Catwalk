@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PUT from '../../../../api/PUT';
 
 const HelpfulOrReport = (props: any) => {
   const [helpful, setHelpful] = useState(props.value);
   const [helpClick, setHelpClick] = useState(false);
+  useEffect(() => {
+    setHelpful(props.value);
+  }, [props.value])
 
   const HelpfulClick = () => {
     if (helpClick === false) {
@@ -29,12 +32,12 @@ const HelpfulOrReport = (props: any) => {
 };
 
   return (
-      <div>Helpful?
-        <span> <a onClick={() => {HelpfulClick()}}>Yes</a>
-          &#40;{helpful}&#41;
-        </span>
-         &#124; <a onClick={() => {Report()}}>Report</a>
-      </div>
+    <div style={{padding: "10px"}}>Helpful?
+      <span> <a onClick={() => {HelpfulClick()}}>Yes</a>
+        &#40;{helpful}&#41;
+      </span>
+       &#124; <a onClick={() => {Report()}}>Report</a>
+    </div>
   )
 }
 

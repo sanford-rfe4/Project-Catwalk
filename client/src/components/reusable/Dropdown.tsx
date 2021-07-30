@@ -27,7 +27,7 @@ const Dropdown = (props: any) => {
 
   return (
     <React.Fragment>
-    <a onClick={() => {handleClick()}}>{props.initial}</a>
+    <a onClick={() => {handleClick()}}> {props.initial}</a>
     <ul ref={dropdownRef} className={`menu ${drop ? 'active' : 'inactive'}`}>
       {props.listItems.map((item: any) => (
         <li><a onClick={(event) => {props.itemClick(event)}}>{item}</a></li>
