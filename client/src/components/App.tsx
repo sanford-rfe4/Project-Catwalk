@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import GET from '../../../api/GET';
 import '../styles/styles.css';
-
+import '../styles/questions.css'
 import Overview from './Overview';
 import Questions from './Questions';
 import RatingsAndReviews from './RatingsAndReviews';
@@ -23,12 +23,18 @@ const App = (props: any) => {
 
   return (
     <div>
+<<<<<<< HEAD
       <Overview
         selectedProduct={currentProduct}
         setProduct={setCurrentProduct}
       />
       <Questions/>
       <RatingsAndReviews/>
+=======
+      <Overview selectedProduct={currentProduct}/>
+      <Questions />
+      <Ratings/>
+>>>>>>> 0629673 (basic functionality of q and a implemented)
       <RelatedItems/>
     </div>
   );
