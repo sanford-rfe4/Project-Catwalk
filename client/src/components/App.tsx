@@ -12,7 +12,7 @@ const App = (props: any) => {
   let [currentProduct, setCurrentProduct] = useState({});
 
   const defaultProduct = async () => {
-    let product = await GET.products.getProductById(20001);
+    let product = await GET.products.getProductById(19089);
     setCurrentProduct(product);
   }
 
@@ -23,7 +23,10 @@ const App = (props: any) => {
 
   return (
     <div>
-      <Overview selectedProduct={currentProduct}/>
+      <Overview
+        selectedProduct={currentProduct}
+        setProduct={setCurrentProduct}
+      />
       <Questions/>
       <Ratings/>
       <RelatedItems/>

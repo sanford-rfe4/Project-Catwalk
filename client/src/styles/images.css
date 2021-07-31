@@ -6,6 +6,13 @@
   margin-right: 15px;
   margin-top: 15px;
   margin-left: 0;
+  opacity: 100%;
+  object-fit: cover;
+  transition: opacity 0.2s;
+}
+
+.style-thumbnail:hover{
+  opacity: 70%;
 }
 
 .current-thumbnail{

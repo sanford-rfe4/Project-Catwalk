@@ -7,7 +7,7 @@ import StyleSelector from './StyleSelector';
 
 const ProductInfo = (props: any) => {
 
-  let {product} = props;
+  let {product, selectedStyle, setStyle, setStyleId, setStylePhotos} = props;
 
   let [productRating, setProductRating] = useState<number>(0);
   let [productPrice, setProductPrice] = useState('');
@@ -83,6 +83,10 @@ const ProductInfo = (props: any) => {
       <div id='product-styles-div'>
         <StyleSelector
           styles={styles}
+          setStylePhotos={setStylePhotos}
+          setStyle={setStyle}
+          setStyleId={setStyleId}
+          selectedStyle={selectedStyle}
           setStylePrice={setProductPrice}
           setStyleDiscountPrice={setProductDiscountPrice}
         />

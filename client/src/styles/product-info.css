@@ -1,10 +1,7 @@
 #product-info{
-  /* border-style: solid;
-  border-width: 1px;
-  border-color: black; */
-  width: 35%;
-  float: right;
-  padding: 20px;
+  width: 310px;
+  margin-left: 10px;
+  padding: 10px;
   font-family: sans-serif;
 }
 

@@ -4,11 +4,15 @@ import Modal from './reusable/Modal';
 import Stars from './reusable/Stars';
 import Header from './overview/Header';
 import ProductInfo from './overview/ProductInfo';
+import Gallery from './overview/Gallery';
 
 const Overview = (props: any) => {
 
-  let {selectedProduct} = props;
+  let {selectedProduct, setProduct} = props;
 
+  let [selectedStyle, setSelectedStyle] = useState('');
+  let [selectedStyleId, setSelectedStyleId] = useState();
+  let [selectedStylePhotos, setSelectedStylePhotos] = useState([]);
   let [showModal, setShowModal] = useState(false);
   let [modalDisplay, setModalDisplay] = useState("none");
 
@@ -18,9 +22,27 @@ const Overview = (props: any) => {
 
   return (
     <div>
-      <Header/>
-      <ProductInfo product={selectedProduct}/>
-      <button onClick={() => setShowModal(!showModal)}>Open Modal</button>
+      <Header setProduct={setProduct}/>
+      <div id='overview-flex'>
+        <div id='gallery-flex'>
+          <Gallery
+            product={selectedProduct}
+            selectedStyle={selectedStyle}
+            styleId={selectedStyleId}
+            stylePhotos={selectedStylePhotos}
+          />
+        </div>
+        <div id='product-info-flex'>
+          <ProductInfo
+            product={selectedProduct}
+            selectedStyle={selectedStyle}
+            setStyle={setSelectedStyle}
+            setStyleId={setSelectedStyleId}
+            setStylePhotos={setSelectedStylePhotos}
+          />
+        </div>
+      </div>
+      {/* <button onClick={() => setShowModal(!showModal)}>Open Modal</button> */}
       <Modal
         title={'Question'}
         body={'Please write your question in the space below.'}
