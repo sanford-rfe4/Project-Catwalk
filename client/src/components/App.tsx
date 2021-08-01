@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import GET from '../../../api/GET';
 import '../styles/styles.css';
-import '../styles/questions.css'
+import '../styles/questions.css';
+import '../styles/questionModal.css';
 import Overview from './Overview';
 import Questions from './Questions';
 import RatingsAndReviews from './RatingsAndReviews';
 import RelatedItems from './RelatedItems';
-
+import Modal from './questions-answers/Modal';
 const App = (props: any) => {
 
   let [currentProduct, setCurrentProduct] = useState({});
