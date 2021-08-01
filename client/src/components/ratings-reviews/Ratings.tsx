@@ -7,7 +7,7 @@ import StarBar from './StarBar';
 const Ratings = (props: any) => {
   const [Rating, setRating] = useState(0);
   const [Bars, setBars] = useState<any>([]);
-
+  const [recommendPercent, setRecommendPercent] = useState(0);
   useEffect(() => {
     fetchMetaData();
   }, [])
@@ -35,6 +35,7 @@ const Ratings = (props: any) => {
   }
   const fetchMetaData = async () => {
     var fetchedData = await GET.reviews.getProductReviewMetaDataById(19093);
+    var recommend = fetchedData.recommended;
     const calculations : Array<number> = ratingCalc(fetchedData.ratings);
     setRating(calculations[0]);
 
@@ -47,17 +48,33 @@ const Ratings = (props: any) => {
         reviews={fetchedData.ratings[i]}
         />);
     }
+    var recTrue = parseInt(recommend.true);
+    var recFalse = parseInt(recommend.false);
+    console.log(recTrue, recFalse);
+    if (recTrue === 0 && recFalse === 0) {
+      setRecommendPercent(0);
+    } else if (recFalse === 0) {
+      setRecommendPercent(100);
+    } else if (recTrue === 0) {
+      setRecommendPercent(0);
+    } else {
+      var total = recTrue + recFalse;
+      var percent = Math.round((recTrue / total) * 100);
+      setRecommendPercent(percent);
+    }
     setBars(mapped);
   }
-
 
   return (
     <div>
     <div>
-      <div>{Rating}</div><Stars ratingNum={Rating}/>
+      <h1>{Rating}</h1><Stars ratingNum={Rating}/>
     </div>
     <div>
       {Bars}
+    </div>
+    <div>
+      {recommendPercent}% of people recommend this product!
     </div>
     </div>
   )

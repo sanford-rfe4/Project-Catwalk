@@ -26,11 +26,7 @@ const ReviewList = (props: any) => {
   //console.log(currentReviews);
   useEffect(() => {
     fetchReviews(sort);
-  }, [sort])
-
-  useEffect(() => {
-    reviewPrint();
-  }, [props.filter])
+  }, [sort, props.filter])
 
   const handleClick = () => {
     fetchReviews(sort);
@@ -52,6 +48,7 @@ const ReviewList = (props: any) => {
     }
 
     for (var i = 0; i < currentReviews; i++) {
+     // console.log(props.filter.includes(Ratings[i]));
       if (!props.filter.includes(Ratings[i]))
       reviews.push(Reviews[i]);
     }
@@ -66,7 +63,7 @@ const ReviewList = (props: any) => {
 
   const fetchReviews = async (sort: string) => {
     var fetchedReviews = await GET.reviews.getSortedProductReviews(19093, 1, 20, sort);
-    let ratingArray = fetchedReviews.results.map((review: any) => (review.rating));
+    let ratingsArray = fetchedReviews.results.map((review: any) => (review.rating));
     let mapped = fetchedReviews.results.map((review: any) => (
     <div className='review'>
       <div className='header'>
@@ -88,7 +85,7 @@ const ReviewList = (props: any) => {
     if (mapped.length < 2) {
       setCurrentReviews(mapped.length);
     }
-    setRatings(ratingArray);
+    setRatings(ratingsArray);
     setReviews(mapped);
   }
   return (
