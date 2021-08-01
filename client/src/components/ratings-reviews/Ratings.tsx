@@ -3,6 +3,7 @@ import Characteristics from './Characteristics';
 import GET from '../../../../api/GET';
 import Stars from '../reusable/Stars';
 import StarBar from './StarBar';
+import '../../styles/ratings.css';
 
 
 // const [Reviews, setReviews] = useState([]);
@@ -77,7 +78,7 @@ const Ratings = (props: any) => {
       <div>
         {Bars}
       </div>
-      <div>
+      <div className='recommend'>
         {recommendPercent}% of the reviews recommend this product!
       </div>
       <div>
