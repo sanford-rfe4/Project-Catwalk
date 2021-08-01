@@ -16,7 +16,7 @@ const App = (props: any) => {
     setCurrentProduct(product);
   }
 
-  // this useEffect hook is the same as componentDidMount
+  // this useEffect hook is the same as componentDidMount.
   useEffect(() => {
     defaultProduct();
   }, [])
