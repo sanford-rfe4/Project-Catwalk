@@ -1,0 +1,15 @@
+
+.char {
+  white-space: pre-line;
+}
+
+.bar {
+  background: #EBEBEB;
+  height: 7px;
+  position: absolute;
+}
+
+.pointer {
+  position: relative;
+  z-index: 1;
+}

@@ -1,18 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import GET from '../../../api/GET';
 import '../styles/styles.css';
-
 import Overview from './Overview';
 import Questions from './Questions';
 import RatingsAndReviews from './RatingsAndReviews';
 import RelatedItems from './RelatedItems';
 
 const App = (props: any) => {
-
   let [currentProduct, setCurrentProduct] = useState({});
-
   const defaultProduct = async () => {
-    let product = await GET.products.getProductById(19089);
+    let product = await GET.products.getProductById(19100);
     setCurrentProduct(product);
   }
 
@@ -20,15 +17,13 @@ const App = (props: any) => {
   useEffect(() => {
     defaultProduct();
   }, [])
+  console.log(currentProduct);
 
   return (
     <div>
-      <Overview
-        selectedProduct={currentProduct}
-        setProduct={setCurrentProduct}
-      />
+      <Overview selectedProduct={currentProduct}/>
       <Questions/>
-      <RatingsAndReviews/>
+      <RatingsAndReviews productID={19093}/>
       <RelatedItems/>
     </div>
   );

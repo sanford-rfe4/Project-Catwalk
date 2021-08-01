@@ -26,8 +26,8 @@ const RatingsAndReviews = (props: any) => {
     <div>
     <h2>Ratings &#38; Reviews</h2>
     <div className ='container'>
-    <div className='ratings'><Ratings filterClick={filterClick}/></div>
-    <div className='review-list'><ReviewList filter={filter}/></div>
+    <div className='ratings'><Ratings productID={props.productID} filterClick={filterClick}/></div>
+    <div className='review-list'><ReviewList productID={props.productID} filter={filter}/></div>
     </div>
     </div>
   );

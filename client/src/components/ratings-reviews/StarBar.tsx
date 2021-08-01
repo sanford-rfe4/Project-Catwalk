@@ -9,12 +9,13 @@ const StarBar = (props: any) => {
       </a>
         <div
         className = 'back-bar'
-        style = {{width: `${100 * 0.15}%`}}
-        />
+        style = {{width: '200px'}}
+        >
         <div
         id ='bar-percent'
-        style = {{width: `${props.percent * 100 * 0.15}%`}}
+        style = {{width: `${props.percent * 100}%`}}
         />
+        </div>
       <div>
       &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;{props.reviews} Reviews
       </div>

@@ -38,7 +38,7 @@ const Ratings = (props: any) => {
     return calculations;
   }
   const fetchMetaData = async () => {
-    var fetchedData = await GET.reviews.getProductReviewMetaDataById(19093);
+    var fetchedData = await GET.reviews.getProductReviewMetaDataById(props.productID);
     var recommend = fetchedData.recommended;
     const calculations : Array<number> = ratingCalc(fetchedData.ratings);
     setRating(calculations[0]);

@@ -1,16 +1,19 @@
 import React, {useState} from 'react';
+import '../../styles/characteristics.css';
 
 const Characteristics = (props: any) => {
   const renderFunction = () => {
     var mapped = [];
     for (var key in props.char) {
       mapped.push(
-        <div>
-          <div>
+        <div className='full-char'>
+          <div className='char'>
             {key}
           </div>
           <div>
-            {props.char[key].value}
+            <div className='bar' style={{width: '200px'}}>
+              <div className = 'pointer'>&#9662;</div>
+            </div>
           </div>
         </div>
       )
