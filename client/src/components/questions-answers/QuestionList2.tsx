@@ -34,10 +34,10 @@ const QuestionList2 = (props: any) => {
     setShow(false);
   }
   useEffect(() => {
-    GET.questions.getProductQuestionsById(19090, 1, 50)
+    GET.questions.getProductQuestionsById(props.product.id, 1, 50)
     .then((questions) => {setList(questions.results);
       console.log(questions.results)})
-  },[])
+  },[props.product])
 
   //add a question about product
   const headers = {
@@ -58,7 +58,7 @@ const QuestionList2 = (props: any) => {
   };
 
   useEffect(() => {
-    setProduct_id(19090);
+    setProduct_id(props.product.id);
   }, []);
 
   return (<>

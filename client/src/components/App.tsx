@@ -5,7 +5,6 @@ import Overview from './Overview';
 import Questions from './Questions';
 import RatingsAndReviews from './RatingsAndReviews';
 import RelatedItems from './RelatedItems';
-import Modal from './questions-answers/Modal';
 const App = (props: any) => {
   let [currentProduct, setCurrentProduct] = useState<any>({});
   let [productId, setProductId] = useState();
@@ -40,3 +39,5 @@ const App = (props: any) => {
 };
 
 export default App;
+
+

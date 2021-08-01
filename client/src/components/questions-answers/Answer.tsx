@@ -39,7 +39,7 @@ const Answer = (props: any) => {
   return (
     <>
     <div className='answer'>
-      {props.question.body}
+      <b>A: </b>{props.question.body}
       <div>
       {'by  ' + props.question.answerer_name + ',  ' + moment(props.question.date).format('LL') + ' |  '}   <Helpful helpful={helpful} answer={props.question}
       handleHelpfulnessClick={clickedHelpful ? () => {} : () => handleHelpfulnessClick(props.question) }/>
