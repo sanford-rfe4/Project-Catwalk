@@ -3,6 +3,7 @@ import Characteristics from './Characteristics';
 import GET from '../../../../api/GET';
 import Stars from '../reusable/Stars';
 import StarBar from './StarBar';
+import '../../styles/ratings.css';
 
 
 // const [Reviews, setReviews] = useState([]);
@@ -12,8 +13,16 @@ const Ratings = (props: any) => {
   const [char, setChar] = useState({});
   const [recommendPercent, setRecommendPercent] = useState(0);
   useEffect(() => {
-    fetchMetaData();
-  }, [])
+    if (props.productID) {
+      fetchMetaData();
+    }
+  }, [props.productID])
+  // const [id, setId] = useState();
+  // useEffect(() => {
+  //   if (props.productID) {
+  //     setId(props.productID);
+  //   }
+  // }, [props.productID])
 
   const ratingCalc = (ratings: any) => {
     var totalRating = 0;
@@ -37,7 +46,7 @@ const Ratings = (props: any) => {
     return calculations;
   }
   const fetchMetaData = async () => {
-    var fetchedData = await GET.reviews.getProductReviewMetaDataById(19093);
+    var fetchedData = await GET.reviews.getProductReviewMetaDataById(props.productID);
     var recommend = fetchedData.recommended;
     const calculations : Array<number> = ratingCalc(fetchedData.ratings);
     setRating(calculations[0]);
@@ -71,13 +80,13 @@ const Ratings = (props: any) => {
 
   return (
     <div>
-      <div>
-        <h1>{Rating}</h1><Stars ratingNum={Rating}/>
+      <div className='rating-header'>
+        <h1 className='rating'>{Rating}</h1><Stars ratingNum={Rating}/>
       </div>
       <div>
         {Bars}
       </div>
-      <div>
+      <div className='recommend'>
         {recommendPercent}% of the reviews recommend this product!
       </div>
       <div>

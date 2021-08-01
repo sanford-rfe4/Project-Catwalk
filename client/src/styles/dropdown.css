@@ -1,14 +1,16 @@
 .menu {
+  text-align:center;
+  list-style-type: none;
+  list-style-position:inside;
   background: #ffffff;
   border-radius: 8px;
   position: relative;
-  top: 60px;
-  right: 0;
-  width: 300px;
+  left: 15%;
+  width: 100px;
   box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
   opacity: 0;
   visibility: hidden;
-  transform: translateY(-20px);
+  transform: translateY(-10px);
   transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
 }
 

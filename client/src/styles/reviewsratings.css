@@ -1,7 +1,7 @@
 .container {
   display: flex;
   flex-direction: row;
-  align-items: flex-end;
+  align-items: flex-start;
 }
 
 .review-list{
@@ -10,5 +10,5 @@
 }
 
 .ratings {
-  padding: 0 50px;
+  padding: 0px 50px;
 }
