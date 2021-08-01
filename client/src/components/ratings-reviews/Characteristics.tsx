@@ -20,7 +20,7 @@ const Characteristics = (props: any) => {
 
   return (
     <div>
-      {renderFunction()};
+      {renderFunction()}
     </div>
   )
 }

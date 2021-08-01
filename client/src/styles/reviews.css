@@ -1,9 +1,11 @@
 .review {
-  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  width: 75%;
 }
 
 .info {
-  width: 200px;
+  display: flex;
+  align-items:flex-end;
 }
 .header {
   display: flex;
@@ -19,14 +21,12 @@
   padding: 10px;
 }
 .reviewBody {
-  display: flex;
-  align-items: center;
   padding: 10px;
 }
 
 .scrollable {
     margin: 0 auto;
     height: 350px;
-    width: 600px;
+    width: 200%;
     overflow: auto;
 }

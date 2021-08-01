@@ -34,6 +34,7 @@ const ReviewList = (props: any) => {
   const itemClick = (event: any) => {
     setSort(event.target.innerText);
   }
+
   const checkRecommend = (recommend: boolean) => {
     if (recommend === true) {
       return (
@@ -41,6 +42,7 @@ const ReviewList = (props: any) => {
       )
     }
   }
+
   const reviewPrint = () => {
     var reviews : any = [];
     if (currentReviews < 2 && !noMoreReviews) {
@@ -54,6 +56,7 @@ const ReviewList = (props: any) => {
     }
     return reviews;
   }
+
   const moreClick = () => {
     setCurrentReviews(currentReviews + 2);
     if (ReviewsAmount <= currentReviews + 2) {
@@ -88,6 +91,7 @@ const ReviewList = (props: any) => {
     setRatings(ratingsArray);
     setReviews(mapped);
   }
+  
   return (
     <React.Fragment>
     <div className='Dropdown'>{ReviewsAmount} reviews, sorted by

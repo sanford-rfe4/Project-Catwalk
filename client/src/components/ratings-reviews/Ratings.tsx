@@ -78,7 +78,7 @@ const Ratings = (props: any) => {
         {Bars}
       </div>
       <div>
-        {recommendPercent}% of people recommend this product!
+        {recommendPercent}% of the reviews recommend this product!
       </div>
       <div>
         <Characteristics char={char}/>

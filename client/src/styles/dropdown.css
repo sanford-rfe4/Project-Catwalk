@@ -17,3 +17,7 @@
   visibility: visible;
   transform: translateY(0);
 }
+
+.drop {
+  text-decoration: underline;
+}

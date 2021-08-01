@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import POST from '../../../api/POST';
 import ReviewList from './ratings-reviews/ReviewList';
 import Ratings from './ratings-reviews/Ratings';
-
+import '../styles/reviewsratings.css';
 // let postQuestion = POST.postQuestion;
 // var data = {
 //         'body': 'Will this second question post on product 19000?',
@@ -24,8 +24,11 @@ const RatingsAndReviews = (props: any) => {
 
   return (
     <div>
-    <div><Ratings filterClick={filterClick}/></div>
-    <div><ReviewList filter={filter}/></div>
+    <h2>Ratings &#38; Reviews</h2>
+    <div className ='container'>
+    <div className='ratings'><Ratings filterClick={filterClick}/></div>
+    <div className='review-list'><ReviewList filter={filter}/></div>
+    </div>
     </div>
   );
 };
