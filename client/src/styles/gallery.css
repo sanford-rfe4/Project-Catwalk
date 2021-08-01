@@ -1,0 +1,102 @@
+#image-gallery{
+  display: flex;
+  align-items: center;
+  background-color:whitesmoke;
+  max-width: 700px;
+  width: 700px;
+  height: 600px;
+}
+
+#image-carousel{
+  margin-left: 100px;
+  width: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  user-select: none; /* supported by Chrome and Opera */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+}
+
+/* .crop{
+  width: 70px;
+  height: 70px;
+  overflow: hidden;
+} */
+
+#down-arrow{
+  transform: rotate(180deg) scaleX(-1);
+}
+
+#left-arrow{
+  transform: rotate(-90deg);
+  transition: width 0.2s, height 0.2s;
+}
+
+#left-arrow:hover{
+  width: 33px;
+  height: 33px;
+}
+
+#right-arrow{
+  transform: rotate(90deg);
+  margin-left: auto;
+  transition: width 0.2s, height 0.2s;
+}
+
+#right-arrow:hover{
+  width: 33px;
+  height: 33px;
+}
+
+.gallery-arrow{
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.arrow{
+  width: 20px;
+  cursor: pointer;
+}
+
+.gallery-thumbnail{
+  cursor: pointer;
+  box-shadow: 2px 2px 5px black;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  width: 63px;
+  height: 63px;
+  object-fit: cover;
+  transition: width 0.2s, height 0.2s;
+}
+
+.underlined-thumbnail{
+  text-decoration: underline;
+  border-bottom: solid;
+  border-spacing: 10px;
+  border-color: red;
+}
+
+.gallery-thumbnail:hover{
+  width: 66px;
+  height: 66px;
+}
+
+.underline{
+  position: relative;
+  bottom: 2px;
+  margin: 0;
+}
+
+.underlined-thick{
+  border: solid;
+  border-color: black;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-width: 1.9px;
+}
