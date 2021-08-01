@@ -7,9 +7,11 @@ import RatingsAndReviews from './RatingsAndReviews';
 import RelatedItems from './RelatedItems';
 
 const App = (props: any) => {
-  let [currentProduct, setCurrentProduct] = useState({});
+  let [currentProduct, setCurrentProduct] = useState<any>({});
+  let [productId, setProductId] = useState();
+
   const defaultProduct = async () => {
-    let product = await GET.products.getProductById(19100);
+    let product = await GET.products.getProductById(19089);
     setCurrentProduct(product);
   }
 
@@ -17,7 +19,12 @@ const App = (props: any) => {
   useEffect(() => {
     defaultProduct();
   }, [])
-  console.log(currentProduct);
+
+  useEffect (() => {
+    if (currentProduct.id) {
+      setProductId(currentProduct.id);
+    }
+  }, [currentProduct])
 
   return (
     <div>
@@ -26,7 +33,7 @@ const App = (props: any) => {
       setProduct={setCurrentProduct}
       />
       <Questions/>
-      <RatingsAndReviews productID={19093}/>
+      <RatingsAndReviews productID={productId}/>
       <RelatedItems/>
     </div>
   );

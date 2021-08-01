@@ -12,7 +12,6 @@ import '../styles/reviewsratings.css';
 // }
 const RatingsAndReviews = (props: any) => {
   const [filter, setFilter] = useState<any>([]);
-
   // useEffect(() => {
   //   postQuestion(data);
   // }, [])

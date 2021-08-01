@@ -13,8 +13,16 @@ const Ratings = (props: any) => {
   const [char, setChar] = useState({});
   const [recommendPercent, setRecommendPercent] = useState(0);
   useEffect(() => {
-    fetchMetaData();
-  }, [])
+    if (props.productID) {
+      fetchMetaData();
+    }
+  }, [props.productID])
+  // const [id, setId] = useState();
+  // useEffect(() => {
+  //   if (props.productID) {
+  //     setId(props.productID);
+  //   }
+  // }, [props.productID])
 
   const ratingCalc = (ratings: any) => {
     var totalRating = 0;

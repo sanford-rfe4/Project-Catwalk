@@ -26,7 +26,7 @@ const ReviewList = (props: any) => {
   //console.log(currentReviews);
   useEffect(() => {
     fetchReviews(sort);
-  }, [sort, props.filter])
+  }, [sort, props.productID])
 
   const handleClick = () => {
     fetchReviews(sort);
