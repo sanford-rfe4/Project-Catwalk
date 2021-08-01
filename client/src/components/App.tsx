@@ -31,7 +31,7 @@ const App = (props: any) => {
       selectedProduct={currentProduct}
       setProduct={setCurrentProduct}
       />
-      <Questions/>
+      <Questions product={currentProduct} />
       <RatingsAndReviews productID={productId}/>
       <RelatedItems/>
     </div>
