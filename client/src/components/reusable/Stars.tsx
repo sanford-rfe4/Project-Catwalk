@@ -42,7 +42,6 @@ const Stars = (props: stars) => {
   }, [rating]);
 
   useEffect(() => {
-    // console.log('ratingNum', props.ratingNum);
     setRating(props.ratingNum);
   }, [props.ratingNum])
 
