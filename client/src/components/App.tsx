@@ -5,7 +5,6 @@ import Overview from './Overview';
 import Questions from './Questions';
 import RatingsAndReviews from './RatingsAndReviews';
 import RelatedItems from './RelatedItems';
-
 const App = (props: any) => {
   let [currentProduct, setCurrentProduct] = useState<any>({});
   let [productId, setProductId] = useState();
@@ -32,7 +31,7 @@ const App = (props: any) => {
       selectedProduct={currentProduct}
       setProduct={setCurrentProduct}
       />
-      <Questions/>
+      <Questions product={currentProduct} />
       <RatingsAndReviews productID={productId}/>
       <RelatedItems/>
     </div>
@@ -40,3 +39,5 @@ const App = (props: any) => {
 };
 
 export default App;
+
+
