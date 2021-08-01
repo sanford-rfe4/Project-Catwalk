@@ -1,12 +1,15 @@
 import React, {useState, useEffect} from 'react';
+import Characteristics from './Characteristics';
 import GET from '../../../../api/GET';
 import Stars from '../reusable/Stars';
 import StarBar from './StarBar';
+
 
 // const [Reviews, setReviews] = useState([]);
 const Ratings = (props: any) => {
   const [Rating, setRating] = useState(0);
   const [Bars, setBars] = useState<any>([]);
+  const [char, setChar] = useState({});
   const [recommendPercent, setRecommendPercent] = useState(0);
   useEffect(() => {
     fetchMetaData();
@@ -62,20 +65,24 @@ const Ratings = (props: any) => {
       var percent = Math.round((recTrue / total) * 100);
       setRecommendPercent(percent);
     }
+    setChar(fetchedData.characteristics);
     setBars(mapped);
   }
 
   return (
     <div>
-    <div>
-      <h1>{Rating}</h1><Stars ratingNum={Rating}/>
-    </div>
-    <div>
-      {Bars}
-    </div>
-    <div>
-      {recommendPercent}% of people recommend this product!
-    </div>
+      <div>
+        <h1>{Rating}</h1><Stars ratingNum={Rating}/>
+      </div>
+      <div>
+        {Bars}
+      </div>
+      <div>
+        {recommendPercent}% of people recommend this product!
+      </div>
+      <div>
+        <Characteristics char={char}/>
+      </div>
     </div>
   )
 }
