@@ -16,6 +16,11 @@ const Header = (props: any) => {
     }
   }
 
+  const submit = (e: any) => {
+    e.preventDefault();
+    searchForProduct(searchText);
+  }
+
   useEffect(() => {
     console.log(searchText)
   }, [searchText])
@@ -27,13 +32,13 @@ const Header = (props: any) => {
           <em>Logo</em>
         </div>
         <div id='search-bar'>
-          <form>
+          <form onSubmit={submit}>
             <input
               onChange={e => setSearchText(e.target.value)}
               placeholder='search...'
               type='text'>
             </input>
-            <input onClick={() => searchForProduct(searchText)} type='submit'></input>
+            <input type='submit'></input>
           </form>
         </div>
       </div>
