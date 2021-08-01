@@ -1,10 +1,11 @@
 import React, {useState, useEffect} from 'react';
-import MoreAdd from '../reusable/MoreAdd';
-import HelpfulOrReport from '../reusable/HelpfulOrReport';
 import POST from '../../../../api/POST';
 import GET from '../../../../api/GET';
+import MoreAdd from '../reusable/MoreAdd';
+import HelpfulOrReport from '../reusable/HelpfulOrReport';
 import Stars from '../reusable/Stars';
 import Dropdown from '../reusable/Dropdown';
+import '../../styles/reviews.css';
 const moment = require('moment');
 
 // let postQuestion = POST.postQuestion;
@@ -18,47 +19,89 @@ const ReviewList = (props: any) => {
   const [Reviews, setReviews] = useState([]);
   const [ReviewsAmount, setReviewsAmount] = useState(0);
   const [sort, setSort] = useState('relevant');
-
+  const [currentReviews, setCurrentReviews] = useState(2);
+  const [noMoreReviews, setNoMoreReviews] = useState(false);
+  const [Ratings, setRatings] = useState([]);
+  //console.log(Reviews);
+  //console.log(currentReviews);
   useEffect(() => {
-    fetchReviews();
-  }, [])
+    fetchReviews(sort);
+  }, [sort, props.filter])
 
   const handleClick = () => {
-    fetchReviews();
+    fetchReviews(sort);
   }
-  const itemClick = () => {
-    console.log('hello');
+  const itemClick = (event: any) => {
+    setSort(event.target.innerText);
   }
 
-  const fetchReviews = async () => {
-    var fetchedReviews = await GET.reviews.getSortedProductReviews(20000);
+  const checkRecommend = (recommend: boolean) => {
+    if (recommend === true) {
+      return (
+        <div className='recommend'>&#10003; I recommend this product</div>
+      )
+    }
+  }
+
+  const reviewPrint = () => {
+    var reviews : any = [];
+    if (currentReviews < 2 && !noMoreReviews) {
+      setNoMoreReviews(true);
+    }
+
+    for (var i = 0; i < currentReviews; i++) {
+     // console.log(props.filter.includes(Ratings[i]));
+      if (!props.filter.includes(Ratings[i]))
+      reviews.push(Reviews[i]);
+    }
+    return reviews;
+  }
+
+  const moreClick = () => {
+    setCurrentReviews(currentReviews + 2);
+    if (ReviewsAmount <= currentReviews + 2) {
+      setNoMoreReviews(true);
+    }
+  };
+
+  const fetchReviews = async (sort: string) => {
+    var fetchedReviews = await GET.reviews.getSortedProductReviews(19093, 1, 20, sort);
+    let ratingsArray = fetchedReviews.results.map((review: any) => (review.rating));
     let mapped = fetchedReviews.results.map((review: any) => (
-    <React.Fragment>
-    <Stars ratingNum={review.rating}/>
-    <div> Reviewer: {review.reviewer_name} Date Posted: {moment(review.date).format('MMMM Do YYYY')} </div>
-    <div style={{fontWeight: "bold"}}> {review.summary} </div>
-    <div>{review.body}</div>
-    <HelpfulOrReport
-    widget ='Review'
-    index={review.review_id}
-    value={review.helpfulness}
-    handleClick={handleClick}
-    />
-    </React.Fragment>
+    <div className='review'>
+      <div className='header'>
+        <Stars ratingNum={review.rating}/>
+        <div className='info'>{review.reviewer_name}, {moment(review.date).format('MMMM Do YYYY')}</div>
+      </div>
+      <div style={{fontWeight: "bold"}}> {review.summary} </div>
+      <div className='reviewBody'>{review.body}</div>
+      {checkRecommend(review.recommend)}
+      <HelpfulOrReport
+      widget ='Review'
+      index={review.review_id}
+      value={review.helpfulness}
+      handleClick={handleClick}
+      />
+    </div>
     ));
     setReviewsAmount(mapped.length);
+    if (mapped.length < 2) {
+      setCurrentReviews(mapped.length);
+    }
+    setRatings(ratingsArray);
     setReviews(mapped);
   }
+  
   return (
     <React.Fragment>
-    <div className='Dropdown'>{ReviewsAmount} reviews, sorted by 
+    <div className='Dropdown'>{ReviewsAmount} reviews, sorted by
     <Dropdown
     initial={sort}
     listItems={['relevant', 'newest', 'helpful']}
     itemClick={itemClick}/>
     </div>
-    {Reviews}
-      <span><MoreAdd widget='Review'/></span>
+    <div className='scrollable'>{reviewPrint()}</div>
+      <span><MoreAdd widget='Review' moreClick={moreClick} noMoreItems = {noMoreReviews}/></span>
     </React.Fragment>
   )
 };

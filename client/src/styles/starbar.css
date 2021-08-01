@@ -1,0 +1,21 @@
+.fullBar {
+  padding: 10px;
+  white-space: pre-line;
+}
+.back-bar {
+  background: #EBEBEB;
+  height: 7px;
+  position: absolute;
+}
+#bar-percent {
+  background: #152815;
+  height: 7px;
+  border-bottom: 1px solid #222;
+  border-right: 1px solid #222;
+  position: absolute;
+  z-index: 1;
+}
+
+.stars {
+  text-decoration: underline;
+}

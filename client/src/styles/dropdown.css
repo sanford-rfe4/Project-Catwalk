@@ -1,7 +1,7 @@
 .menu {
   background: #ffffff;
   border-radius: 8px;
-  position: absolute;
+  position: relative;
   top: 60px;
   right: 0;
   width: 300px;
@@ -16,4 +16,8 @@
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
+}
+
+.drop {
+  text-decoration: underline;
 }
