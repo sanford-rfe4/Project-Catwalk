@@ -9,7 +9,8 @@ import RelatedItems from './RelatedItems';
 
 const App = (props: any) => {
 
-  let [currentProduct, setCurrentProduct] = useState({});
+  let [currentProduct, setCurrentProduct] = useState<any>({});
+  let [productId, setProductId] = useState();
 
   const defaultProduct = async () => {
     let product = await GET.products.getProductById(19089);
@@ -19,7 +20,15 @@ const App = (props: any) => {
   // this useEffect hook is the same as componentDidMount.
   useEffect(() => {
     defaultProduct();
-  }, [])
+  }, []);
+
+  useEffect(() => {
+    if (currentProduct.id) {
+      setProductId(currentProduct.id);
+    }
+  }, [currentProduct])
+
+  console.log(productId);
 
   return (
     <div>
@@ -28,7 +37,7 @@ const App = (props: any) => {
         setProduct={setCurrentProduct}
       />
       <Questions/>
-      <RatingsAndReviews/>
+      <RatingsAndReviews id={productId}/>
       <RelatedItems/>
     </div>
   );
