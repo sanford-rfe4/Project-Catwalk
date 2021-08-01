@@ -4,7 +4,7 @@ import '../styles/styles.css';
 
 import Overview from './Overview';
 import Questions from './Questions';
-import Ratings from './Ratings';
+import RatingsAndReviews from './RatingsAndReviews';
 import RelatedItems from './RelatedItems';
 
 const App = (props: any) => {
@@ -25,7 +25,7 @@ const App = (props: any) => {
     <div>
       <Overview selectedProduct={currentProduct}/>
       <Questions/>
-      <Ratings/>
+      <RatingsAndReviews/>
       <RelatedItems/>
     </div>
   );

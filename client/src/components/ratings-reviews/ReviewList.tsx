@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react';
-import MoreAdd from '../reusable/MoreAdd';
-import HelpfulOrReport from '../reusable/HelpfulOrReport';
 import POST from '../../../../api/POST';
 import GET from '../../../../api/GET';
+import MoreAdd from '../reusable/MoreAdd';
+import HelpfulOrReport from '../reusable/HelpfulOrReport';
 import Stars from '../reusable/Stars';
 import Dropdown from '../reusable/Dropdown';
 import '../../styles/reviews.css';
@@ -59,12 +59,12 @@ const ReviewList = (props: any) => {
   };
 
   const fetchReviews = async (sort: string) => {
-    var fetchedReviews = await GET.reviews.getSortedProductReviews(19093, 1, 5, sort);
+    var fetchedReviews = await GET.reviews.getSortedProductReviews(19093, 1, 20, sort);
     let mapped = fetchedReviews.results.map((review: any) => (
     <div className='review'>
       <div className='header'>
         <Stars ratingNum={review.rating}/>
-        {review.reviewer_name}, {moment(review.date).format('MMMM Do YYYY')}
+        <div className='info'>{review.reviewer_name}, {moment(review.date).format('MMMM Do YYYY')}</div>
       </div>
       <div style={{fontWeight: "bold"}}> {review.summary} </div>
       <div className='reviewBody'>{review.body}</div>
