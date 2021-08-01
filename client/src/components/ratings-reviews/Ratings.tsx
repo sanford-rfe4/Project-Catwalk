@@ -72,8 +72,8 @@ const Ratings = (props: any) => {
 
   return (
     <div>
-      <div>
-        <h1>{Rating}</h1><Stars ratingNum={Rating}/>
+      <div className='rating-header'>
+        <h1 className='rating'>{Rating}</h1><Stars ratingNum={Rating}/>
       </div>
       <div>
         {Bars}

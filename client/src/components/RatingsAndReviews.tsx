@@ -22,7 +22,7 @@ const RatingsAndReviews = (props: any) => {
     setFilter(newFilter);
   };
 
-  return (
+  return  (
     <div>
     <h2>Ratings &#38; Reviews</h2>
     <div className ='container'>
