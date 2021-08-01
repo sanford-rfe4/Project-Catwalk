@@ -2,7 +2,8 @@ import axios from 'axios';
 import AJAX from '../client/src/config';
 
 const headers = {
-  'Authorization': `${AJAX.API_KEY}`
+  'Authorization': `${AJAX.API_KEY}`,
+  'Content-Type': 'application/json'
 }
 
 interface Review {

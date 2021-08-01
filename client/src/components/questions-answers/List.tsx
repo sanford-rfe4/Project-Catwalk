@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react';
 import ListItem from './ListItem';
 import Question from './Question';
 const List = (props: any) => {
-  console.log(props.allVisible)
   const [list, setList] = useState([]);
   const [current, setCurrent] = useState(0);
   const [allVisible, setAllVisible] = useState(false);
@@ -12,14 +11,8 @@ const List = (props: any) => {
     setList(props.list);
   }, [props.list]);
 
-  // useEffect(() => {
-  //   if (current === list.length) {
-  //     setAllVisible(true);
-  //   }
-  // }, [current])
-
   useEffect(() => {
-    setCurrent(list.length < 2 ? list.length : 2)
+    setCurrent(list.length <= props.displayLength ? list.length : props.displayLength)
   }, [list]);
 
   useEffect(() => {
@@ -43,7 +36,7 @@ const List = (props: any) => {
       )}
       </div>
       {(!allVisible && list.length > 0) &&
-      <button onClick={handleMoreQuestionsClick}>load more</button>
+      <button onClick={handleMoreQuestionsClick}>{props.buttonText}</button>
       }
 
     </>
