@@ -34,40 +34,56 @@ const Helpful = (props: any) => {
 }
 
 const Question = (props: any) => {
+
+
   const [reported, setReported] = useState(false);
   const [clickedHelpful, setClickedHelpful] = useState(false);
   const [helpful, setHelpful] = useState(0);
   const [show, setShow] = useState(false);
 
   useEffect(() => {
-    setHelpful(props.question.helpfulness);
+    setHelpful(props.question.question_helpfulness);
   }, [props.question]);
+
   const handleReportClick = (id: number) => {
     PUT.questions.report(id, () => {
       console.log('reported');
       setReported(true);
     })
   }
-  const handleHelpfulnessClick = (id: number) => {
-    PUT.questions.helpful(id, () => {
-
+  const handleHelpfulnessClick = (question: any) => {
+    console.log(question);
+    PUT.questions.helpful(question.question_id, () => {
+      setClickedHelpful(true);
+      setHelpful(helpful + 1);
     })
-  }
+  };
   const handleClose = () => {
     setShow(false);
   }
   return (
     <>
-    <div>
-      {'Q: ' + props.question.question_body}
+    <div className='question'>
+      <div className='question-body'>
+      <b>{'Q: ' + props.question.question_body}</b>
+      </div>
+    <div className='question-response'>
+    <div className='add-answer' onClick={()=>setShow(true)}>
+      Add Answer
     </div>
+    <div className='helpful'>
+    <Helpful helpful={helpful} answer={props.question}
+      handleHelpfulnessClick={clickedHelpful ? () => {} : () => handleHelpfulnessClick(props.question) }/>
+    {/* <Report handleReportClick={() => handleReportClick(props.question.question_id)} clickedReported={reported} /> */}
+    </div>
+
+    </div>
+    </div>
+    <div className='answers'>
     <List list={Object.values(props.question.answers)}
     listItem={Answer} displayLength={2}
-     buttonText='more answers' />
+     buttonText='LOAD MORE ANSWERS' />
 
-    <Report handleReportClick={() => handleReportClick(props.question.question_id)} clickedReported={reported} />
-    <div className='add-answer' onClick={()=>setShow(true)}>
-      <ul>answer</ul>
     </div>
     <Modal.Answer question={props.question}
     show={show} close={handleClose} />
