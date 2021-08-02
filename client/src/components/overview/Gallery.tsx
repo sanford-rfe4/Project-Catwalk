@@ -74,8 +74,10 @@ const Gallery = (props: any) => {
       if (trimmedStylePhotosIndex < 6) {
         setTrimmedStylePhotosIndex(trimmedStylePhotosIndex + 1);
       } else {
-        setStartingIndex(startingIndex + 1);
-        setEndingIndex(endingIndex + 1);
+        if (endingIndex < stylePhotos.length) {
+          setStartingIndex(startingIndex + 1);
+          setEndingIndex(endingIndex + 1);
+        }
       }
     }
   }
@@ -87,8 +89,10 @@ const Gallery = (props: any) => {
       if (trimmedStylePhotosIndex > 0) {
         setTrimmedStylePhotosIndex(trimmedStylePhotosIndex - 1);
       } else {
-        setStartingIndex(startingIndex - 1);
-        setEndingIndex(endingIndex - 1);
+        if (startingIndex > 0) {
+          setStartingIndex(startingIndex - 1);
+          setEndingIndex(endingIndex - 1);
+        }
       }
     }
   }
