@@ -5,8 +5,8 @@ const SearchQuestions = (props: any) => {
   const handleSubmit = (e: any) => {
     e.preventDefault();
     console.log(props.list)
-    props.setList(props.list.filter((item: any) =>
-      item.question_body.includes(query)
+    props.setFilteredList(props.list.filter((item: any) =>
+      query.length > 2 ? item.question_body.includes(query) : true
     ))
   }
   return (

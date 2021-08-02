@@ -30,6 +30,8 @@ const addQuestion = (props: any) => {
 const QuestionList2 = (props: any) => {
   const [list, setList] = useState([]);
   const [show, setShow] = useState(false);
+  const [filteredList, setFilteredList] = useState([]);
+
   const handleClose = () => {
     setShow(false);
   }
@@ -39,6 +41,9 @@ const QuestionList2 = (props: any) => {
       console.log(questions.results)})
   },[props.product])
 
+  useEffect(() => {
+    setFilteredList(list);
+  }, [list]);
   //add a question about product
   const headers = {
     'Authorization': `${AJAX.API_KEY}`,
@@ -65,8 +70,8 @@ const QuestionList2 = (props: any) => {
     <div className='qa-container'>
       <span className='label'><h3>QUESTIONS & ANSWERS</h3></span>
       <SearchQuestions list={list}
-      setList={setList} />
-      <List list={list} listItem={Question}
+      setFilteredList={setFilteredList} />
+      <List list={filteredList} listItem={Question}
       displayLength={4}
       buttonText='more questions' />
       <div className='ask-question' onClick={()=>setShow(true)}>ADD A QUESTION</div>
