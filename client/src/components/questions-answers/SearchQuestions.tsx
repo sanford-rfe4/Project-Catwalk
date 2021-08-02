@@ -6,7 +6,7 @@ const SearchQuestions = (props: any) => {
     e.preventDefault();
     setQuery(e.target.value);
     props.setFilteredList(props.list.filter((item: any) =>
-      e.target.value.length > 2 ? item.question_body.includes(e.target.value) : true
+      e.target.value.length > 2 ? item.question_body.toLowerCase().includes(e.target.value.toLowerCase()) : true
     ))
 
   }
