@@ -91,6 +91,23 @@ const ProductInfo = (props: any) => {
           setStyleDiscountPrice={setProductDiscountPrice}
         />
       </div>
+      <div id='size-quantity-container'>
+        <div className='product-info-dropdown' id='select-style'>
+          SELECT STYLE
+        </div>
+        <div className='product-info-dropdown' id='quantity'>
+
+        </div>
+      </div>
+
+      <div id='add-to-bag-favorite-container'>
+        <div className='product-info-dropdown' id='add-to-bag'>
+          ADD TO BAG
+        </div>
+        <div className='product-info-dropdown' id='favorite'>
+
+        </div>
+      </div>
     </div>
   );
 };

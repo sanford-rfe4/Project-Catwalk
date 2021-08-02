@@ -49,3 +49,21 @@
   text-decoration: line-through;
   color: red;
 }
+
+#size-quantity-container{
+  display: flex;
+  flex-direction: row;
+}
+
+#add-to-bag-favorite-container{
+  display: flex;
+  flex-direction: row;
+}
+
+.product-info-dropdown{
+  border: solid;
+  border-width: 1px;
+  font-size: 15px;
+  padding: 15px;
+  margin: 10px 10px 10px 0;
+}
