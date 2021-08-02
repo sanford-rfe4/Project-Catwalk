@@ -64,7 +64,7 @@ const ProductInfo = (props: any) => {
   return (
     <div id='product-info'>
       <div id='product-star-rating-div'>
-        <span id='product-star-rating'>{renderStars()}</span><span><a id='read-reviews' href="#">Read all reviews</a></span>
+        <span id='product-star-rating'>{renderStars()}</span><span><a id='read-reviews' href="#rating-header">Read all reviews</a></span>
       </div>
       <div id='product-category'>
         {product.category !== undefined ? product.category.toUpperCase() : ''}
