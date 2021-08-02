@@ -29,7 +29,7 @@ const GET = {
     getProductById: async function (id: Number) {
       try {
         let result = await axios.get(AJAX.URL + '/products/' + id, {
-          headers: header
+          headers: header,
         });
         // console.log(result.data);
         return result.data;
