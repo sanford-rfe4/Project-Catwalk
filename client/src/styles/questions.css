@@ -1,3 +1,150 @@
-.answer {
-  background-color: red;
+.qa-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 65%;
+  margin: auto;
+  font-family: sans-serif;
+  margin-top: 40px;
+}
+.wrapper {
+  position: relative;
+}
+.qa-container > * {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 2ch;
+}
+.label {
+  margin: .1ch;
+  font-family: sans-serif;
+}
+.search-icon {
+  position: absolute;
+  top: 8.5ch;
+  left: 99%;
+
+}
+
+.answer > * {
+  margin-top: 10px;
+  margin-bottom:10px;
+}
+
+.answer-info {
+  display: flex;
+  flex-direction: row;
+  justify-content:start;
+  width: 50%;
+  font-weight: lighter;
+  margin-bottom: 2ch;
+}
+.answer-info > * {
+  margin-right: 20px;
+}
+.more-answers {
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  font-size: smaller;
+}
+
+.ask-question {
+  width:30%;
+  display: block;
+  height:50px;
+  border-style: solid;
+  border-color: black;
+  border-width: 2px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+
+
+.question {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: auto;
+  margin-bottom:2ch;
+  margin-top:3ch;
+}
+
+.question-body {
+  width: 60%;
+  font-family: sans-serif;
+}
+
+.answers {
+  display: flex;
+  flex-direction: column;
+  margin:auto;
+  margin-top:1ch;
+}
+
+.answer-modal {
+  position: fixed;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0,0,0,.5);
+}
+
+.answer-wrapper {
+  display: flex;
+  flex-direction: column;
+
+}
+.answer-wrapper > * {
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+  justify-content: space-between;
+  background-color:white;
+}
+.answer-form  > * {
+  margin:2ch;
+  display: flex;
+  justify-content: space-between;
+  padding:2ch;
+  font-size: larger;
+}
+.submit-button {
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  margin-bottom:3ch;
+}
+
+.question-response {
+  font-weight: lighter;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.question-response > * {
+  display: block;
+}
+.add-answer {
+  display: block;
+}
+.helpful {
+  margin-left:30px;
 }

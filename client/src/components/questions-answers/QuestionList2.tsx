@@ -62,14 +62,17 @@ const QuestionList2 = (props: any) => {
   }, []);
 
   return (<>
+    <div className='qa-container'>
+      <span className='label'><h3>QUESTIONS & ANSWERS</h3></span>
       <SearchQuestions list={list}
       setList={setList} />
       <List list={list} listItem={Question}
       displayLength={4}
       buttonText='more questions' />
-      <button onClick={()=>setShow(true)}>ADD A QUESTION</button>
+      <div className='ask-question' onClick={()=>setShow(true)}>ADD A QUESTION</div>
       <Modal.Ask show={show}
       close={handleClose} />
+      </div>
       </>)
 }
 

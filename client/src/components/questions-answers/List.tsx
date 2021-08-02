@@ -36,7 +36,10 @@ const List = (props: any) => {
       )}
       </div>
       {(!allVisible && list.length > 0) &&
-      <button onClick={handleMoreQuestionsClick}>{props.buttonText}</button>
+      // <button onClick={handleMoreQuestionsClick}>{props.buttonText}</button>
+      <div onClick={handleMoreQuestionsClick}>
+        <span className='more-answers'>{props.buttonText}</span>
+      </div>
       }
 
     </>

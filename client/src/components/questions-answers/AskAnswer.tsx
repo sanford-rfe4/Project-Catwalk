@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import POST from "../../../../api/POST";
-
+import '../../styles/questions.css'
 const AskAnswer: any = {
 AddQuestion: (props: any) => {
   const [body, setBody] = useState('');
@@ -21,7 +21,7 @@ AddQuestion: (props: any) => {
     props.close();
   }
   return (
-    <form onSubmit={handleSubmit}>
+    <form className='answer-wrapper' onSubmit={handleSubmit}>
       <label>
         question:
         <textarea value={body} onChange={(e)=>setBody(e.target.value)} />
@@ -52,15 +52,15 @@ AddAnswer: (props: any) => {
     props.close();
   }
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        question:
-        <textarea value={body} onChange={(e)=>setBody(e.target.value)} />
-        <input type='text' value={name} onChange={(e)=> setName(e.target.value)} />
-        <input type='text' value={email} onChange={(e)=> setEmail(e.target.value)} />
-      </label>
-      <input type='submit' value='Submit' />
+    <div className='answer-wrapper'>
+    <form className='answer-form' onSubmit={handleSubmit}>
+
+        <textarea placeholder='question' cols={100} rows={10} value={body} onChange={(e)=>setBody(e.target.value)} />
+        <input type='text' placeholder='name' value={name} onChange={(e)=> setName(e.target.value)} />
+        <input type='text' placeholder='email' value={email} onChange={(e)=> setEmail(e.target.value)} />
+      <input className='submit-button' type='submit' value='Submit' />
     </form>
+    </div>
   )
 }}
 

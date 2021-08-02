@@ -40,8 +40,11 @@ const Answer = (props: any) => {
     <>
     <div className='answer'>
       <b>A: </b>{props.question.body}
-      <div>
-      {'by  ' + props.question.answerer_name + ',  ' + moment(props.question.date).format('LL') + ' |  '}   <Helpful helpful={helpful} answer={props.question}
+      <div className='answer-info'>
+        <div className='answer-by'>
+      {'by  ' + props.question.answerer_name + ',   ' + moment(props.question.date).format('LL') }
+      </div>
+      <Helpful helpful={helpful} answer={props.question}
       handleHelpfulnessClick={clickedHelpful ? () => {} : () => handleHelpfulnessClick(props.question) }/>
       <Report clickedReported={clickedReported} handleReportClick={ clickedReported ?
       () => {} : setClickedReported } />
