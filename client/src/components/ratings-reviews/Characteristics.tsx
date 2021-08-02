@@ -12,7 +12,7 @@ const Characteristics = (props: any) => {
           </div>
           <div>
             <div className='bar' style={{width: '200px'}}>
-              <div className = 'pointer'>&#9662;</div>
+              <div className = 'pointer' style={{left: `${(props.char[key].value * 100) / 5}%`}}>&#9662;</div>
             </div>
           </div>
         </div>

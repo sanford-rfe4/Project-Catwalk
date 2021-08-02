@@ -6,10 +6,11 @@
 .bar {
   background: #EBEBEB;
   height: 7px;
-  position: absolute;
+  position: relative;
 }
 
 .pointer {
-  position: relative;
+  bottom: 0;
+  position: absolute;
   z-index: 1;
 }
