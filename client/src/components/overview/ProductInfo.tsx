@@ -4,6 +4,7 @@ import GET from '../../../../api/GET';
 
 import Stars from '../reusable/Stars';
 import StyleSelector from './StyleSelector';
+import Dropdown from '../reusable/Dropdown';
 
 const ProductInfo = (props: any) => {
 
@@ -91,6 +92,10 @@ const ProductInfo = (props: any) => {
           setStyleDiscountPrice={setProductDiscountPrice}
         />
       </div>
+      <div id='select-size'>SELECT SIZE</div>
+      <div id='quantity'>1</div>
+      <div id='add-to-bag'></div>
+      <div id='favorite'></div>
     </div>
   );
 };
