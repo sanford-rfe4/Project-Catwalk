@@ -55,7 +55,7 @@
 }
 
 .ask-question {
-  width:30%;
+  /* width:30%; */
   display: block;
   height:50px;
   border-style: solid;
@@ -66,7 +66,12 @@
   align-items: center;
 }
 
-
+.show-and-ask {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
 
 .question {
   display: flex;

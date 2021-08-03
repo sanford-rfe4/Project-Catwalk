@@ -35,7 +35,8 @@ const List = (props: any) => {
 
       )}
       </div>
-      {(!allVisible && list.length > 0) &&
+      {/* set to false to remove div without breaking anything */}
+      {(false) &&
       // <button onClick={handleMoreQuestionsClick}>{props.buttonText}</button>
       <div onClick={handleMoreQuestionsClick}>
         <span className='more-answers'>{props.buttonText}</span>
