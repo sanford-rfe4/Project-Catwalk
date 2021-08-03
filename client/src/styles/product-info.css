@@ -42,7 +42,7 @@
 
 #product-price{
   font-size: 15px;
-  margin: 12px 0 17px 0;
+  margin: 15px 0 20px 0;
 }
 
 .slashed-price{
@@ -50,7 +50,12 @@
   color: red;
 }
 
+#selected-style{
+  font-weight:200;
+}
+
 #size-quantity-container{
+  margin-top: 10px;
   display: flex;
   flex-direction: row;
 }
@@ -58,12 +63,57 @@
 #add-to-bag-favorite-container{
   display: flex;
   flex-direction: row;
+  align-content: center;
 }
 
 .product-info-dropdown{
   border: solid;
   border-width: 1px;
   font-size: 15px;
-  padding: 15px;
-  margin: 10px 10px 10px 0;
+  font-weight: bold;
+  padding: 20px;
+  margin: 10px 20px 10px 0;
+  cursor:pointer;
+}
+
+#style-arrow{
+  width: 15px;
+  transform: rotate(180deg);
+  margin-left:auto;
+}
+
+#quantity-arrow{
+  width: 15px;
+  transform: rotate(180deg);
+  margin-left:auto;
+}
+
+#plus-sign{
+  width: 13px;
+  margin-left: auto;
+}
+
+#favorite-star{
+  width: 17px;
+}
+
+#select-style{
+  display:flex;
+  width: 48%;
+}
+
+#quantity{
+  display: flex;
+  width: 20%;
+}
+
+#add-to-bag{
+  width: 63%;
+  display: flex;
+}
+
+#favorite{
+  width: 5%;
+  display: flex;
+  justify-content: center;
 }

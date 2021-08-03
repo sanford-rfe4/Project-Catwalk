@@ -1,6 +1,6 @@
 .style-thumbnail{
-  width: 60px;
-  height: 60px;
+  width: 67px;
+  height: 67px;
   border-radius: 100%;
   cursor: pointer;
   margin-right: 15px;
@@ -16,8 +16,8 @@
 }
 
 .current-thumbnail{
-  width: 58px;
-  height: 58px;
+  width: 65px;
+  height: 65px;
   border-radius: 100%;
   border-style: solid;
   border-width: 1px;
@@ -29,6 +29,6 @@
 }
 
 #thumb-nails{
-  margin-top: 15px;
-  width: 300px;
+  margin-top: 5px;
+  width: 350px;
 }

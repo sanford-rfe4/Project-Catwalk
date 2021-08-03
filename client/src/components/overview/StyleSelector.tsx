@@ -22,7 +22,7 @@ const StyleSelector = (props: any) => {
     console.log(findStyle);
     setStylePhotos(findStyle.photos);
     setStyleId(findStyle.style_id);
-    setStyle(findStyle.name);
+    setStyle(findStyle.name.toUpperCase());
     setStylePrice(findStyle.original_price);
     setStyleDiscountPrice(findStyle.sale_price);
   }
@@ -33,7 +33,7 @@ const StyleSelector = (props: any) => {
       for (let i = 0; i < stylesClassList.length; i++) {
         stylesClassList[i].classList.remove('current-thumbnail');
       }
-      setStyle(styles[0].name);
+      setStyle(styles[0].name.toUpperCase());
       setStyleId(styles[0].style_id);
       setStylePhotos(styles[0].photos);
       document.querySelector('#img0')?.classList.add('current-thumbnail');
@@ -42,7 +42,7 @@ const StyleSelector = (props: any) => {
 
   return (
     <div>
-      <b>STYLE {'>  '}</b>  {selectedStyle}
+      <b>STYLE {'>  '}</b>  <span id='selected-style'>{selectedStyle}</span>
         <div id='thumb-nails'>
           {styles.map((style: any, index: number) => {
             return (

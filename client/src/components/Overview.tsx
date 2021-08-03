@@ -36,6 +36,7 @@ const Overview = (props: any) => {
           <ProductInfo
             product={selectedProduct}
             selectedStyle={selectedStyle}
+            styleId={selectedStyleId}
             setStyle={setSelectedStyle}
             setStyleId={setSelectedStyleId}
             setStylePhotos={setSelectedStylePhotos}

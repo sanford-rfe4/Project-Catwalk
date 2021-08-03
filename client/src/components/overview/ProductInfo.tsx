@@ -4,11 +4,13 @@ import GET from '../../../../api/GET';
 
 import Stars from '../reusable/Stars';
 import StyleSelector from './StyleSelector';
+import Cart from './Cart';
 
 const ProductInfo = (props: any) => {
 
-  let {product, selectedStyle, setStyle, setStyleId, setStylePhotos} = props;
+  let {product, selectedStyle, styleId, setStyle, setStyleId, setStylePhotos} = props;
 
+  let [currentStyle, setCurrentStyle] = useState<any>({});
   let [productRating, setProductRating] = useState<number>(0);
   let [productPrice, setProductPrice] = useState('');
   let [productDiscountPrice, setProductDiscountPrice] = useState(null);
@@ -91,23 +93,11 @@ const ProductInfo = (props: any) => {
           setStyleDiscountPrice={setProductDiscountPrice}
         />
       </div>
-      <div id='size-quantity-container'>
-        <div className='product-info-dropdown' id='select-style'>
-          SELECT STYLE
-        </div>
-        <div className='product-info-dropdown' id='quantity'>
-
-        </div>
-      </div>
-
-      <div id='add-to-bag-favorite-container'>
-        <div className='product-info-dropdown' id='add-to-bag'>
-          ADD TO BAG
-        </div>
-        <div className='product-info-dropdown' id='favorite'>
-
-        </div>
-      </div>
+      <Cart
+        styleId={styleId}
+        styles={styles}
+        setCurrentStyle={setCurrentStyle}
+      />
     </div>
   );
 };
