@@ -31,7 +31,18 @@ const QuestionList2 = (props: any) => {
   const [list, setList] = useState([]);
   const [show, setShow] = useState(false);
   const [filteredList, setFilteredList] = useState([]);
+  const [current, setCurrent] = useState(4);
 
+  // current is index of next question to be displayed
+  // updateCurrent increases current to display more questions
+  // List gets passed a sliced, filtered list
+  const updateCurrent = (n: number) => {
+    setCurrent(current + n);
+  }
+
+  useEffect(() => {
+    setFilteredList(filteredList.slice(0, current));
+  }, [current])
   const handleClose = () => {
     setShow(false);
   }
@@ -71,12 +82,20 @@ const QuestionList2 = (props: any) => {
       <span className='label'><h3>QUESTIONS & ANSWERS</h3></span>
       <SearchQuestions list={list}
       setFilteredList={setFilteredList} />
-      <List list={filteredList} listItem={Question}
-      displayLength={4}
-      buttonText='more questions' />
       <div className='ask-question' onClick={()=>setShow(true)}>ADD A QUESTION</div>
       <Modal.Ask show={show}
       close={handleClose} />
+      <List list={filteredList.slice(0, current)} listItem={Question}
+      // displayLength={4}
+      buttonText='more questions' />
+      <div className='show-and-ask'>
+      {/* <div className='ask-question' onClick={()=>setShow(true)}>ADD A QUESTION</div>
+      <Modal.Ask show={show}
+      close={handleClose} /> */}
+      </div>
+      { current === filteredList.length ? null :
+      <div className='ask-question show-more-questions' onClick={() => updateCurrent(2)}>MORE QUESTIONS</div>
+      }
       </div>
       </>)
 }
