@@ -1,11 +1,11 @@
 .fullBar {
   padding: 10px;
-  white-space: pre-line;
+  width: 300px;
 }
 .back-bar {
   background: #EBEBEB;
   height: 7px;
-  position: absolute;
+  position: relative;
 }
 #bar-percent {
   background: #152815;

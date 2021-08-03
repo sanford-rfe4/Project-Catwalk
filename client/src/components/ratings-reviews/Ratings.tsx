@@ -53,12 +53,21 @@ const Ratings = (props: any) => {
 
     var mapped = [];
     for (var i = 1; i < 6; i++) {
-      mapped.push(<StarBar
-        filterClick={props.filterClick}
-        percent={calculations[i]}
-        rating={i}
-        reviews={fetchedData.ratings[i]}
-        />);
+      mapped.push(
+      <div className='breakdown'>
+        <a className='stars' onClick={() => (props.filterClick(i))}>
+        {i} stars
+        </a>
+        <StarBar
+          filterClick={props.filterClick}
+          percent={calculations[i]}
+          />
+        <div>
+          {fetchedData.ratings[i]} Reviews
+        </div>
+      </div>
+      );
+
     }
     var recTrue = parseInt(recommend.true);
     var recFalse = parseInt(recommend.false);
@@ -79,8 +88,8 @@ const Ratings = (props: any) => {
   }
 
   return (
-    <div>
-      <div id='rating-header' className='rating-header'>
+      <div>
+      <div className='rating-header'>
         <h1 className='rating'>{Rating}</h1><Stars ratingNum={Rating}/>
       </div>
       <div>
