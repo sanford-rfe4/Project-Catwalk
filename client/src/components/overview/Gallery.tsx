@@ -102,8 +102,6 @@ const Gallery = (props: any) => {
       setCurrentStylePhoto(stylePhotos[0].url);
       setTrimmedStylePhotos(stylePhotos.slice(startingIndex, endingIndex));
     }
-    console.log(stylePhotos[0]);
-    console.log(stylePhotos);
   }, [stylePhotos])
 
   useEffect(() => {
@@ -123,8 +121,6 @@ const Gallery = (props: any) => {
       let thumbnail = document.getElementsByClassName(`${currentStylePhoto}`);
       thumbnail[0]?.classList.add('underlined-thick');
     }
-    console.log('index', currentStylePhotosIndex);
-    console.log('trimmedIndex', trimmedStylePhotosIndex);
   }, [currentStylePhoto, trimmedStylePhotos])
 
   useEffect(() => {

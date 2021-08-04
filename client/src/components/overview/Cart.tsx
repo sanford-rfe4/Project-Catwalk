@@ -108,14 +108,14 @@ const Cart = (props: any) => {
 
           <div
             onClick={() => {
-              setQuantityOpen(!quantityOpen);
+              selectedSize === 'SELECT SIZE' ? setQuantityOpen(false) : setQuantityOpen(!quantityOpen);
               setSizeOpen(false);
             }}
             onMouseLeave={() => setQuantityOpen(false)}
             className='product-info-dropdown'
             id='quantity'>
             <div id='quantity-header'>
-              {isQuantitySelected ? selectedQuantity : 1}
+              {selectedSize === 'SELECT SIZE' ? '-' : selectedQuantity}
               <svg
                 id='quantity-arrow'
                 className='style-arrow'

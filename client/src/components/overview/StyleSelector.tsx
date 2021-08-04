@@ -5,8 +5,6 @@ const StyleSelector = (props: any) => {
 
   let {styles, setStylePrice, setStyleDiscountPrice, selectedStyle, setStyle, setStyleId, setStylePhotos} = props;
 
-  // let [selectedStyleId, setSelectedStyleId] = useState(0);
-
   const setCurrentStyle = (e: any) => {
     let currentlySelected = document.querySelector('.current-thumbnail');
     if (currentlySelected !== null) {
@@ -19,7 +17,6 @@ const StyleSelector = (props: any) => {
       return style.name === styleName;
     })
 
-    console.log(findStyle);
     setStylePhotos(findStyle.photos);
     setStyleId(findStyle.style_id);
     setStyle(findStyle.name.toUpperCase());
