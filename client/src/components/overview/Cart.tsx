@@ -3,7 +3,7 @@ import '../../styles/cart.css';
 
 const Cart = (props: any) => {
 
-  let {styleId, styles, setCurrentStyle} = props;
+  let {styleId, styles, selectedStyle, setCurrentStyle} = props;
 
   let [sizes, setSizes] = useState<object[]>([]);
   let [selectedSize, setSelectedSize] = useState('SELECT SIZE');
@@ -40,14 +40,11 @@ const Cart = (props: any) => {
     const currentSize: any = sizes.find((size: any) => {
       return size.size === selectedSize;
     })
-    // if (currentSize !== undefined) {
-      // setSelectedQuantity(currentSize.quantity);
       let sizesArr = [];
       for (let i = 0; i < currentSize.quantity; i++) {
         sizesArr.push(i);
       }
       setQuantityList(sizesArr);
-    // }
   }
 
   useEffect(() => {
@@ -66,8 +63,9 @@ const Cart = (props: any) => {
     if (styles) {
       setSelectedQuantity(1);
       setSelectedSize('SELECT SIZE');
+      setQuantityList([]);
     }
-  }, [styles])
+  }, [styles, selectedStyle])
 
   return (
     <div id='dropdown-container'>
@@ -77,8 +75,8 @@ const Cart = (props: any) => {
           onClick={() => {
             setSizeOpen(!sizeOpen);
             setQuantityOpen(false);
-            // findQuantity();
           }}
+          onMouseLeave={() => setSizeOpen(false)}
           className='product-info-dropdown'
           id='select-style'>
           <div id='select-style-header'>
@@ -114,6 +112,7 @@ const Cart = (props: any) => {
               setQuantityOpen(!quantityOpen);
               setSizeOpen(false);
             }}
+            onMouseLeave={() => setQuantityOpen(false)}
             className='product-info-dropdown'
             id='quantity'>
             <div id='quantity-header'>
@@ -155,9 +154,7 @@ const Cart = (props: any) => {
         </div>
       </div>
       <div>
-          {/* {sizes.map((size: any) => {
-            return <span>{size.quantity}{size.size}</span>
-          })} */}
+
       </div>
     </div>
   );

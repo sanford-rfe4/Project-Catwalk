@@ -18,18 +18,18 @@ describe('GET methods', () => {
       const data = await GET.products.getProductById(17067);
       expect(typeof data).toBe('object');
       // expect(typeof data.id).toBe('number');
-      expect((data.campus)).toBe('hr-rfe');
+      expect((data.campus)).toBe('hr-rfp');
     });
 
     it('returns an object containing the product_id and a results array when getProductStylesById is invoked', async () => {
-      const data = await GET.products.getProductStylesById(19100);
+      const data = await GET.products.getProductStylesById(17067);
       expect(typeof data).toBe('object');
       expect(Array.isArray(data.results)).toBe(true);
-      expect(data.product_id).toBe('19100');
+      expect(data.product_id).toBe('17067');
     });
 
     it('returns an array of related product ids when getRelatedProductsById is invoked', async () => {
-      const data = await GET.products.getRelatedProductsById(19100);
+      const data = await GET.products.getRelatedProductsById(17067);
       expect(Array.isArray(data)).toBe(true);
       for (let i = 0; i < data.length; i++) {
         expect(typeof data[i]).toBe('number');
@@ -39,24 +39,24 @@ describe('GET methods', () => {
 
   describe('Reviews', () => {
     it('returns an object with a results array when getSortedProductReviews is invoked', async () => {
-      const data = await GET.reviews.getSortedProductReviews(19100, 1, 15);
+      const data = await GET.reviews.getSortedProductReviews(17067, 1, 15);
       expect(typeof data).toBe('object');
       expect(Array.isArray(data.results)).toBe(true);
-      expect(data.product).toBe('19100');
+      expect(data.product).toBe('17067');
     });
 
     it('returns an object with meta data when getProductReviewMetaDataById is invoked', async () => {
-      const data = await GET.reviews.getProductReviewMetaDataById(19100);
+      const data = await GET.reviews.getProductReviewMetaDataById(17067);
       expect(typeof data).toBe('object');
-      expect(data.product_id).toBe('19100');
+      expect(data.product_id).toBe('17067');
     });
   });
 
   describe('Questions', () => {
     it('returns an object with a results array when getProductQuestionsById is invoked', async () => {
-      const data = await GET.questions.getProductQuestionsById(19100);
+      const data = await GET.questions.getProductQuestionsById(17067);
       expect(typeof data).toBe('object');
-      expect(data.product_id).toBe('19100');
+      expect(data.product_id).toBe('17067');
       expect(Array.isArray(data.results)).toBe(true);
     });
 
