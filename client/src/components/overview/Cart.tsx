@@ -44,7 +44,7 @@ const Cart = (props: any) => {
       for (let i = 0; i < currentSize.quantity; i++) {
         sizesArr.push(i);
       }
-      setQuantityList(sizesArr);
+      setQuantityList(sizesArr.slice(0, 15));
   }
 
   useEffect(() => {
@@ -70,7 +70,6 @@ const Cart = (props: any) => {
   return (
     <div id='dropdown-container'>
       <div id='size-quantity-container'>
-
         <div
           onClick={() => {
             setSizeOpen(!sizeOpen);
