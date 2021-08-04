@@ -10,6 +10,13 @@
 }
 
 .ratings {
-  width: 30%;
-  padding: 0px 50px;
+  width: 60%;
+  padding-right:50px;
+}
+
+.ratings-reviews {
+  display: flex;
+  flex-direction: column;
+  width: 65%;
+  margin: auto;
 }

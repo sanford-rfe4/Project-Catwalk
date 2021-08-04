@@ -62,7 +62,7 @@ const Ratings = (props: any) => {
           filterClick={props.filterClick}
           percent={calculations[i]}
           />
-        <div>
+        <div className ='review-amount'>
           {fetchedData.ratings[i]} Reviews
         </div>
       </div>
