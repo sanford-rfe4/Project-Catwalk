@@ -162,6 +162,7 @@ const Gallery = (props: any) => {
         </img>
       </div>
       <div style={galleryBackgroundImage} id='image-gallery'>
+        <img id='expand' src='client/assets/images/gallery/fullscreen.svg' alt='expand'></img>
         <svg
           onClick={leftArrowClick}
           style={leftArrowStyle}
