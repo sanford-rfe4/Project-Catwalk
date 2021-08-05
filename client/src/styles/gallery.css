@@ -1,4 +1,5 @@
 #image-gallery{
+  position: relative;
   display: flex;
   align-items: center;
   background-color:whitesmoke;
@@ -8,7 +9,7 @@
 }
 
 #image-carousel{
-  margin-left: 100px;
+  margin-left: 0px;
   width: 100px;
   display: flex;
   align-items: center;
@@ -26,6 +27,20 @@
   height: 70px;
   overflow: hidden;
 } */
+
+#expand{
+  cursor: pointer;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 20px;
+  transition: width 0.1s, height 0.1s;
+}
+
+#expand:hover{
+  width: 21px;
+  height: 21px;
+}
 
 #down-arrow{
   transform: rotate(180deg) scaleX(-1);

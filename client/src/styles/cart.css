@@ -1,0 +1,153 @@
+#size-quantity-container{
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+}
+
+#add-to-bag-favorite-container{
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+}
+
+.product-info-dropdown{
+  border: solid;
+  border-width: 1px;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 20px;
+  margin: 10px 20px 10px 0;
+  cursor:pointer;
+}
+
+#style-arrow{
+  width: 15px;
+  transform: rotate(180deg);
+  margin-left:auto;
+}
+
+#quantity-arrow{
+  width: 15px;
+  transform: rotate(180deg);
+  margin-left:auto;
+}
+
+#plus-sign{
+  width: 13px;
+  margin-left: auto;
+}
+
+#favorite-star{
+  width: 17px;
+}
+
+#select-style{
+  position: relative;
+  display:flex;
+  flex-direction: column;
+  width: 48%;
+  transition: background-color 0.2s;
+}
+
+#select-style-header{
+  display: flex;
+  width: 100%;
+}
+
+#select-style:hover{
+  background-color: #f5f5f5;
+}
+
+@keyframes dropdown {
+  from {opacity: 0%;}
+  to {opacity: 97%;}
+}
+
+#select-style-list{
+  box-shadow: 2px 2px 5px black;
+  animation-name: dropdown;
+  animation-duration: 0.2s;
+  opacity: 97%;
+  /* border: solid;
+  border-width: 1px; */
+  border-radius: 5px;
+  background-color: white;
+  padding: 10px;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 104%;
+  width: 91%;
+}
+
+#quantity{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  transition: background-color 0.2s;
+}
+
+#quantity:hover{
+  background-color: #f5f5f5;
+}
+
+#quantity-header{
+  display: flex;
+  width: 100%;
+}
+
+#quantity-list{
+  box-shadow: 2px 2px 5px black;
+  animation-name: dropdown;
+  animation-duration: 0.2s;
+  opacity: 97%;
+  cursor: default;
+  width: 84%;
+  left: 50%;
+  padding: 10px;
+  transform: translateX(-50%);
+  top: 104%;
+  background-color: white;
+  /* border: solid;
+  border-width: 1px; */
+  border-radius: 5px;
+  position: absolute;
+  display:flex;
+  z-index: 999;
+  flex-direction: column;
+}
+
+.size-item{
+  cursor: pointer;
+  font-size: 15px;
+  margin-top: 3px;
+}
+
+.size-item:hover{
+  font-size: 16px;
+  color: red;
+}
+
+#add-to-bag{
+  width: 63%;
+  display: flex;
+  transition: background-color 0.2s;
+}
+
+#add-to-bag:hover{
+  background-color: #f5f5f5;
+}
+
+#favorite{
+  width: 5%;
+  display: flex;
+  justify-content: center;
+  transition: background-color 0.2s;
+}
+
+#favorite:hover{
+  background-color: #f5f5f5;
+}

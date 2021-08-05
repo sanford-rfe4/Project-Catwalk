@@ -4,11 +4,14 @@ import GET from '../../../../api/GET';
 
 import Stars from '../reusable/Stars';
 import StyleSelector from './StyleSelector';
+import Cart from './Cart';
+import SocialMedia from './SocialMedia';
 
 const ProductInfo = (props: any) => {
 
-  let {product, selectedStyle, setStyle, setStyleId, setStylePhotos} = props;
+  let {product, selectedStyle, styleId, setStyle, setStyleId, setStylePhotos} = props;
 
+  let [currentStyle, setCurrentStyle] = useState<any>({});
   let [productRating, setProductRating] = useState<number>(0);
   let [productPrice, setProductPrice] = useState('');
   let [productDiscountPrice, setProductDiscountPrice] = useState(null);
@@ -64,7 +67,7 @@ const ProductInfo = (props: any) => {
   return (
     <div id='product-info'>
       <div id='product-star-rating-div'>
-        <span id='product-star-rating'>{renderStars()}</span><span><a id='read-reviews' href="#">Read all reviews</a></span>
+        <span id='product-star-rating'>{renderStars()}</span><span><a id='read-reviews' href="#rating-header">Read all reviews</a></span>
       </div>
       <div id='product-category'>
         {product.category !== undefined ? product.category.toUpperCase() : ''}
@@ -80,6 +83,7 @@ const ProductInfo = (props: any) => {
         </div> :
         '$' + productPrice}
       </div>
+      <SocialMedia/>
       <div id='product-styles-div'>
         <StyleSelector
           styles={styles}
@@ -91,6 +95,12 @@ const ProductInfo = (props: any) => {
           setStyleDiscountPrice={setProductDiscountPrice}
         />
       </div>
+      <Cart
+        styleId={styleId}
+        styles={styles}
+        selectedStyle={selectedStyle}
+        setCurrentStyle={setCurrentStyle}
+      />
     </div>
   );
 };

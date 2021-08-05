@@ -5,6 +5,7 @@ import Stars from './reusable/Stars';
 import Header from './overview/Header';
 import ProductInfo from './overview/ProductInfo';
 import Gallery from './overview/Gallery';
+import Description from './overview/Description';
 
 const Overview = (props: any) => {
 
@@ -36,12 +37,14 @@ const Overview = (props: any) => {
           <ProductInfo
             product={selectedProduct}
             selectedStyle={selectedStyle}
+            styleId={selectedStyleId}
             setStyle={setSelectedStyle}
             setStyleId={setSelectedStyleId}
             setStylePhotos={setSelectedStylePhotos}
           />
         </div>
       </div>
+      <Description product={selectedProduct}/>
       {/* <button onClick={() => setShowModal(!showModal)}>Open Modal</button> */}
       <Modal
         title={'Question'}

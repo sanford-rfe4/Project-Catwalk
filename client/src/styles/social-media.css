@@ -1,0 +1,13 @@
+#social-media-buttons{
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 15px;
+}
+
+.social-media-button{
+  margin-right: 5px;
+}
+
+.twitter-share-button{
+  margin-right: 5px;
+}
