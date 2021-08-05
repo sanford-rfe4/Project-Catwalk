@@ -94,7 +94,7 @@ const Ratings = (props: any) => {
       <div className='rating-header'>
         <h1 className='rating'>{Rating}</h1><Stars ratingNum={Rating}/>
       </div>
-      <div style={{width: '100%'}}>
+      <div className='total-breakdown'>
         {Bars}
       </div>
       <div className='recommend'>

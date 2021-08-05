@@ -31,5 +31,5 @@
 .full-char {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  padding-bottom: 10px;
 }

@@ -5,13 +5,13 @@ const StarBar = (props: any) => {
   if (props.percent === undefined) {
     var widthBar = {width: '0%'}
   } else {
-    var widthBar = {width: `${props.percent * 150}%`}
+    var widthBar = {width: `${props.percent * 100}%`}
   }
   return (
     <div className='full-bar'>
         <div
         className = 'back-bar'
-        style = {{width: '200px'}}
+        style = {{width: '150px'}}
         >
         <div
         id ='bar-percent'
