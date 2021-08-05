@@ -47,6 +47,13 @@ const Ratings = (props: any) => {
     calculations[0] = Math.round(averageRating * 10) /10;
     return calculations;
   }
+  const ratingsCheck = (rating : any) => {
+    if (rating === undefined) {
+      return 0;
+    } else {
+      return rating;
+    }
+  }
   const fetchMetaData = async () => {
     var fetchedData = await GET.reviews.getProductReviewMetaDataById(props.productID);
     var recommend = fetchedData.recommended;
@@ -66,7 +73,7 @@ const Ratings = (props: any) => {
           percent={calculations[i]}
           />
         <div className ='review-amount'>
-          {fetchedData.ratings[i]} Reviews
+          {ratingsCheck(fetchedData.ratings[i])} reviews
         </div>
       </div>
       );
