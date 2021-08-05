@@ -2,6 +2,11 @@ import React from 'react';
 import '../../styles/starbar.css'
 
 const StarBar = (props: any) => {
+  if (props.percent === undefined) {
+    var widthBar = {width: '0%'}
+  } else {
+    var widthBar = {width: `${props.percent * 150}%`}
+  }
   return (
     <div className='full-bar'>
         <div
@@ -10,7 +15,7 @@ const StarBar = (props: any) => {
         >
         <div
         id ='bar-percent'
-        style = {{width: `${props.percent * 150}%`}}
+        style = {widthBar}
         />
         </div>
     </div>

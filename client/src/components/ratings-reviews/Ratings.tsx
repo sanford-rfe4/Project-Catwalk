@@ -28,21 +28,23 @@ const Ratings = (props: any) => {
     var totalRating = 0;
     var totalReviews = 0;
     var averageRating = 0;
-    var calculations = [];
+    var calculations : any = {};
 
     for (var value in ratings) {
       totalRating += parseInt(value) * parseInt(ratings[value]);
       totalReviews += parseInt(ratings[value]);
     }
+
     for (var value in ratings) {
       var percent = parseInt(ratings[value]) / totalReviews
       Math.round(percent * 10) / 10;
-      calculations.push(percent);
+      if (percent !== undefined) {
+        calculations[value] = percent;
+      }
     }
-
+    console.log(calculations);
     averageRating = totalRating/totalReviews;
-    calculations.unshift(averageRating);
-    calculations[0] = Math.round(calculations[0] * 10) /10;
+    calculations[0] = Math.round(averageRating * 10) /10;
     return calculations;
   }
   const fetchMetaData = async () => {
@@ -53,9 +55,10 @@ const Ratings = (props: any) => {
 
     var mapped = [];
     for (var i = 5; i >= 1; i--) {
+      console.log('i', i, calculations[i]);
       mapped.push(
       <div className='breakdown'>
-        <a className='stars' onClick={() => (props.filterClick(i))}>
+        <a className='stars' onClick={() => {props.filterClick(i)}}>
         {i} stars
         </a>
         <StarBar
@@ -71,7 +74,6 @@ const Ratings = (props: any) => {
     }
     var recTrue = parseInt(recommend.true);
     var recFalse = parseInt(recommend.false);
-    console.log(recTrue, recFalse);
     if (recTrue === 0 && recFalse === 0) {
       setRecommendPercent(0);
     } else if (recFalse === 0) {

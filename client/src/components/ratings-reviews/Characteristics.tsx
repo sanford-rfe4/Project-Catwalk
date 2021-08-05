@@ -12,7 +12,6 @@ const Characteristics = (props: any) => {
         key === 'Width' ||
         key === 'Length' ||
         key === 'Fit') {
-          console.log(props.char[key].value);
           for (var i = 1; i < 4.99; i += 1.33) {
           if (i <= props.char[key].value && i + 1.33 > props.char[key].value) {
             var point = (((props.char[key].value - i) / 1.33) * 100);
@@ -43,11 +42,8 @@ const Characteristics = (props: any) => {
         key === 'Comfort' ||
         key === 'Quality') {
           for (var i = 1; i < 5; i++) {
-          console.log(Math.floor(props.char[key].value));
-          console.log('i', i);
           if (i === Math.floor(props.char[key].value)) {
             var point = (props.char[key].value - i) * 100;
-              console.log('POINT', point);
             bars.push(
               <div
               className='bar'
