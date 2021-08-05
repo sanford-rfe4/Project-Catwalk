@@ -79,13 +79,16 @@ const Ratings = (props: any) => {
       );
 
     }
+
+    console.log(recommend.false);
     var recTrue = parseInt(recommend.true);
     var recFalse = parseInt(recommend.false);
-    if (recTrue === 0 && recFalse === 0) {
+    console.log(recFalse, recTrue);
+    if (!recTrue && !recFalse) {
       setRecommendPercent(0);
-    } else if (recFalse === 0) {
+    } else if (!recFalse) {
       setRecommendPercent(100);
-    } else if (recTrue === 0) {
+    } else if (!recTrue) {
       setRecommendPercent(0);
     } else {
       var total = recTrue + recFalse;
