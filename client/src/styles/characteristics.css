@@ -1,5 +1,6 @@
 
 .char {
+  font-size: small;
   white-space: pre-line;
 }
 
@@ -13,4 +14,22 @@
   bottom: 0;
   position: absolute;
   z-index: 1;
+}
+
+.complete-bar {
+  display: flex;
+  flex-direction: row;
+}
+
+.measurement {
+  display: flex;
+  justify-content: space-between;
+  width: 212px;
+  font-size: x-small;
+}
+
+.full-char {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 10px;
 }

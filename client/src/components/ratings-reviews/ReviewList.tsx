@@ -22,8 +22,7 @@ const ReviewList = (props: any) => {
   const [currentReviews, setCurrentReviews] = useState(2);
   const [noMoreReviews, setNoMoreReviews] = useState(false);
   const [Ratings, setRatings] = useState([]);
-  //console.log(Reviews);
-  //console.log(currentReviews);
+
   useEffect(() => {
     fetchReviews(sort);
   }, [sort, props.productID])
@@ -50,8 +49,7 @@ const ReviewList = (props: any) => {
     }
 
     for (var i = 0; i < currentReviews; i++) {
-     // console.log(props.filter.includes(Ratings[i]));
-      if (!props.filter.includes(Ratings[i]))
+      if (props.filter.includes(Ratings[i]) || props.filter.length === 0)
       reviews.push(Reviews[i]);
     }
     return reviews;
@@ -65,7 +63,7 @@ const ReviewList = (props: any) => {
   };
 
   const fetchReviews = async (sort: string) => {
-    var fetchedReviews = await GET.reviews.getSortedProductReviews(props.productID, 1, 20, sort);
+    var fetchedReviews = await GET.reviews.getSortedProductReviews(props.productID, 1, 500, sort);
     let ratingsArray = fetchedReviews.results.map((review: any) => (review.rating));
     let mapped = fetchedReviews.results.map((review: any) => (
     <div className='review'>
@@ -101,7 +99,13 @@ const ReviewList = (props: any) => {
     itemClick={itemClick}/>
     </div>
     <div className='scrollable'>{reviewPrint()}</div>
-      <span><MoreAdd widget='Review' moreClick={moreClick} noMoreItems = {noMoreReviews}/></span>
+      <span>
+        <MoreAdd
+          widget='Review'
+          moreClick={moreClick}
+          noMoreItems = {noMoreReviews}
+          productID = {props.productID}/>
+      </span>
     </React.Fragment>
   )
 };

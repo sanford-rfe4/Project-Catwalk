@@ -25,13 +25,14 @@
 
 .scrollable {
   height: 350px;
-  width: 100%;
+  width: 120%;
   overflow: auto;
 }
 
 .stars {
   text-decoration: underline;
   padding-right: 10px;
+  cursor: pointer; 
 }
 
 .review-amount {

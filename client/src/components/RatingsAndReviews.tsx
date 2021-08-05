@@ -15,14 +15,20 @@ const RatingsAndReviews = (props: any) => {
   // useEffect(() => {
   //   postQuestion(data);
   // }, [])
+    useEffect(() => {
+      renderBoth()
+    }, [filter])
+
   const filterClick = (rating : number) => {
+    console.log(rating);
     var newFilter = filter;
     newFilter.push(rating);
     setFilter(newFilter);
   };
 
-  return  (
-    <div className='ratings-reviews'>
+  const renderBoth = () => {
+    return (
+      <div className='ratings-reviews'>
       <h2>Ratings &#38; Reviews</h2>
       <div className ='container'>
         <div className='ratings'>
@@ -37,6 +43,10 @@ const RatingsAndReviews = (props: any) => {
         </div>
       </div>
     </div>
+    )
+  }
+  return (
+    renderBoth()
   );
 };
 

@@ -1,0 +1,47 @@
+.review-modal {
+  position: fixed;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0,0,0,.5);
+  z-index: 2;
+}
+
+.review-wrapper {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  z-index: 2;
+}
+
+.review-wrapper > * {
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+  justify-content: space-between;
+  background-color:white;
+}
+
+.review-form  > * {
+  margin:2ch;
+  display: flex;
+  justify-content: space-between;
+  padding:2ch;
+  font-size: larger;
+}
+
+.submit-button {
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  margin-bottom:3ch;
+}

@@ -1,7 +1,5 @@
 .menu {
-  text-align:center;
   list-style-type: none;
-  list-style-position:inside;
   background: #ffffff;
   border-radius: 8px;
   position: relative;
@@ -14,8 +12,12 @@
   transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
 }
 
+.menu.inactive {
+  margin: 0;
+}
 .menu.active {
   opacity: 1;
+  margin: 0;
   visibility: visible;
   transform: translateY(0);
 }

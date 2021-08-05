@@ -28,22 +28,31 @@ const Ratings = (props: any) => {
     var totalRating = 0;
     var totalReviews = 0;
     var averageRating = 0;
-    var calculations = [];
+    var calculations : any = {};
 
     for (var value in ratings) {
       totalRating += parseInt(value) * parseInt(ratings[value]);
       totalReviews += parseInt(ratings[value]);
     }
+
     for (var value in ratings) {
       var percent = parseInt(ratings[value]) / totalReviews
       Math.round(percent * 10) / 10;
-      calculations.push(percent);
+      if (percent !== undefined) {
+        calculations[value] = percent;
+      }
     }
-
+    console.log(calculations);
     averageRating = totalRating/totalReviews;
-    calculations.unshift(averageRating);
-    calculations[0] = Math.round(calculations[0] * 10) /10;
+    calculations[0] = Math.round(averageRating * 10) /10;
     return calculations;
+  }
+  const ratingsCheck = (rating : any) => {
+    if (rating === undefined) {
+      return 0;
+    } else {
+      return rating;
+    }
   }
   const fetchMetaData = async () => {
     var fetchedData = await GET.reviews.getProductReviewMetaDataById(props.productID);
@@ -52,31 +61,28 @@ const Ratings = (props: any) => {
     setRating(calculations[0]);
 
     var mapped = [];
-    for (var i = 1; i < 6; i++) {
+    var stars = [0, 1, 2, 3, 4, 5];
+    for (var i = 5; i >= 1; i--) {
       mapped.push(
-      <div className='breakdown'>
-        <a className='stars' onClick={() => (props.filterClick(i))}>
-        {i} stars
-        </a>
         <StarBar
-          filterClick={props.filterClick}
           percent={calculations[i]}
+          filterClick={props.filterClick}
+          ratingsCheck={ratingsCheck}
+          reviews={fetchedData.ratings[i]}
+          rating={i}
           />
-        <div className ='review-amount'>
-          {fetchedData.ratings[i]} Reviews
-        </div>
-      </div>
       );
-
     }
+
+    console.log(recommend.false);
     var recTrue = parseInt(recommend.true);
     var recFalse = parseInt(recommend.false);
-    console.log(recTrue, recFalse);
-    if (recTrue === 0 && recFalse === 0) {
+    console.log(recFalse, recTrue);
+    if (!recTrue && !recFalse) {
       setRecommendPercent(0);
-    } else if (recFalse === 0) {
+    } else if (!recFalse) {
       setRecommendPercent(100);
-    } else if (recTrue === 0) {
+    } else if (!recTrue) {
       setRecommendPercent(0);
     } else {
       var total = recTrue + recFalse;
@@ -92,7 +98,7 @@ const Ratings = (props: any) => {
       <div id='rating-header' className='rating-header'>
         <h1 className='rating'>{Rating}</h1><Stars ratingNum={Rating}/>
       </div>
-      <div>
+      <div className='total-breakdown'>
         {Bars}
       </div>
       <div className='recommend'>
