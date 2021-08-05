@@ -1,0 +1,39 @@
+#description-features-container{
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#description-container{
+  margin-right: 15px;
+  margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+  width: 65%;
+}
+
+#features-container{
+ display: flex;
+ /* flex-direction: column; */
+ border-left: solid;
+ border-width: 1px;
+ margin-top: 10px;
+ margin-left: 10px;
+ padding-left: 10px;
+}
+
+#features-list{
+  margin:0;
+  list-style-image: url('/Users/stevenklier/Documents/hackreactor/hr-rfe4-front-end-capstone/client/assets/images/features/tick.svg');
+}
+
+#feature-check{
+  font-size: 30px;
+}
+
+#feature-list-item{
+  font-size: 13px;
+}

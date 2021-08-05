@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import POST from '../../../../api/POST';
 import '../../styles/cart.css';
 
 const Cart = (props: any) => {
@@ -8,6 +9,8 @@ const Cart = (props: any) => {
   let [sizes, setSizes] = useState<object[]>([]);
   let [selectedSize, setSelectedSize] = useState('SELECT SIZE');
   let [selectedQuantity, setSelectedQuantity] = useState<any>(0);
+  let [selectedSkuId, setSelectedSkuId] = useState<any>('');
+  let [skuIdsAndSize, setSkuIdsAndSize] = useState<object[]>([])
   let [quantityList, setQuantityList] = useState<number[]>([]);
   let [sizeOpen, setSizeOpen] = useState(false);
   let [quantityOpen, setQuantityOpen] = useState(false);
@@ -28,12 +31,26 @@ const Cart = (props: any) => {
 
     let skuIds = Object.keys(styleObj?.skus);
     let sizesArr = [];
+    let skuIdAndSizeArr = [];
 
     for (let i = 0; i < skuIds.length; i++) {
       sizesArr.push(styleObj.skus[skuIds[i]]);
+      skuIdAndSizeArr.push({
+        sku_id: skuIds[i],
+        size: styleObj.skus[skuIds[i]].size
+      });
     }
+    setSkuIdsAndSize(skuIdAndSizeArr);
     setSizes(sizesArr);
     setCurrentStyle(styleObj);
+  }
+
+  const findCurrentSkuId = () => {
+    let current: any = skuIdsAndSize.find((sizeId: any) => {
+      return sizeId.size === selectedSize
+    });
+    console.log(current);
+    setSelectedSkuId(current?.sku_id);
   }
 
   const findQuantity = () => {
@@ -47,6 +64,13 @@ const Cart = (props: any) => {
       setQuantityList(sizesArr.slice(0, 15));
   }
 
+  const addToBag = () => {
+    POST.addToCart({
+      sku_id: selectedSkuId
+    }, () => {alert('added to cart')})
+    return;
+  }
+
   useEffect(() => {
     if (styleId) {
       findCurrentStyleAndSizes();
@@ -56,9 +80,10 @@ const Cart = (props: any) => {
   useEffect(() => {
     if (selectedSize !== 'SELECT SIZE' && selectedSize !== undefined) {
       findQuantity();
+      findCurrentSkuId();
     }
   }, [selectedSize])
-
+  console.log(selectedSkuId);
   useEffect(() => {
     if (styles) {
       setSelectedQuantity(1);
@@ -142,9 +167,10 @@ const Cart = (props: any) => {
 
       </div>
 
+      {console.log()}
 
       <div id='add-to-bag-favorite-container'>
-        <div className='product-info-dropdown' id='add-to-bag'>
+        <div onClick={selectedSize !== 'SELECT SIZE' ? addToBag : () => {}} className='product-info-dropdown' id='add-to-bag'>
           ADD TO BAG
           <img id='plus-sign' src='client/assets/images/product-info/plus.svg'></img>
         </div>

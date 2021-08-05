@@ -33,7 +33,7 @@ interface Answer {
 }
 
 interface Cart {
-  sku_id: Number
+  sku_id: String
 }
 
 interface Interaction {
@@ -44,62 +44,62 @@ interface Interaction {
 
 const POST = {
 
-  postReview: function (body: Review, callback: Function = () => {}) {
-    axios.post(AJAX.URL + '/reviews', body, {headers})
-    .then((res) => {
-      callback();
-      console.log("Successful Review Post!");
-    })
-    .catch((err) => {
-      console.log('Error:', err);
-      throw err;
-    })
+  postReview: function (body: Review, callback: Function = () => { }) {
+    axios.post(AJAX.URL + '/reviews', body, { headers })
+      .then((res) => {
+        callback();
+        console.log("Successful Review Post!");
+      })
+      .catch((err) => {
+        console.log('Error:', err);
+        throw err;
+      })
   },
-  postQuestion: function(body: Question, callback: Function = () => {}) {
-    axios.post(AJAX.URL + '/qa/questions', body, {headers})
-    .then((res) => {
-      callback();
-      console.log("Successful Question Post!");
-    })
-    .catch((err) => {
-      console.log('Error:', err);
-      throw err;
-    })
+  postQuestion: function (body: Question, callback: Function = () => { }) {
+    axios.post(AJAX.URL + '/qa/questions', body, { headers })
+      .then((res) => {
+        callback();
+        console.log("Successful Question Post!");
+      })
+      .catch((err) => {
+        console.log('Error:', err);
+        throw err;
+      })
   },
-  postAnswer: function(question_id: Number, body: Answer, callback: Function = () => {}) {
-    axios.post(AJAX.URL + '/qa/questions/' + question_id + '/answers', body, {headers})
-    .then((res) => {
-      callback();
-      console.log("Successful Answer Post!");
-    })
-    .catch((err) => {
-      console.log('Error:', err);
-      throw err;
-    })
+  postAnswer: function (question_id: Number, body: Answer, callback: Function = () => { }) {
+    axios.post(AJAX.URL + '/qa/questions/' + question_id + '/answers', body, { headers })
+      .then((res) => {
+        callback();
+        console.log("Successful Answer Post!");
+      })
+      .catch((err) => {
+        console.log('Error:', err);
+        throw err;
+      })
 
   },
-  addToCart: function(body: Cart, callback: Function = () => {}) {
-    axios.post(AJAX.URL + '/cart', body, {headers})
-    .then((res) => {
-      callback();
-      console.log("Successful Add to Cart!");
-    })
-    .catch((err) => {
-      console.log('Error:', err);
-      throw err;
-    })
+  addToCart: function (body: Cart, callback: Function = () => { }) {
+    axios.post(AJAX.URL + '/cart', body, { headers })
+      .then((res) => {
+        callback();
+        console.log("Successful Add to Cart!");
+      })
+      .catch((err) => {
+        console.log('Error:', err);
+        throw err;
+      })
 
   },
-  postInteraction: function(body: Interaction, callback: Function = () => {}) {
-    axios.post(AJAX.URL + '/interactions', body, {headers})
-    .then((res) => {
-      callback();
-      console.log("Successful Interaction Post!");
-    })
-    .catch((err) => {
-      console.log('Error:', err);
-      throw err;
-    })
+  postInteraction: function (body: Interaction, callback: Function = () => { }) {
+    axios.post(AJAX.URL + '/interactions', body, { headers })
+      .then((res) => {
+        callback();
+        console.log("Successful Interaction Post!");
+      })
+      .catch((err) => {
+        console.log('Error:', err);
+        throw err;
+      })
 
   }
 
