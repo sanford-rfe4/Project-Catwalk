@@ -25,7 +25,7 @@
 
 .scrollable {
   height: 350px;
-  width: 100%;
+  width: 120%;
   overflow: auto;
 }
 

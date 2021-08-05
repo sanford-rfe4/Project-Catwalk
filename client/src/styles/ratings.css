@@ -8,6 +8,7 @@
   flex-direction: row;
   align-items: center;
   font-size: small;
+  width: 120%;
  }
 
 .rating {

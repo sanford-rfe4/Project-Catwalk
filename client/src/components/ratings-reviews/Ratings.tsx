@@ -52,7 +52,7 @@ const Ratings = (props: any) => {
     setRating(calculations[0]);
 
     var mapped = [];
-    for (var i = 1; i < 6; i++) {
+    for (var i = 5; i >= 1; i--) {
       mapped.push(
       <div className='breakdown'>
         <a className='stars' onClick={() => (props.filterClick(i))}>

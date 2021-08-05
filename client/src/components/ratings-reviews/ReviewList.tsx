@@ -101,7 +101,13 @@ const ReviewList = (props: any) => {
     itemClick={itemClick}/>
     </div>
     <div className='scrollable'>{reviewPrint()}</div>
-      <span><MoreAdd widget='Review' moreClick={moreClick} noMoreItems = {noMoreReviews}/></span>
+      <span>
+        <MoreAdd
+          widget='Review'
+          moreClick={moreClick}
+          noMoreItems = {noMoreReviews}
+          productID = {props.productID}/>
+      </span>
     </React.Fragment>
   )
 };
