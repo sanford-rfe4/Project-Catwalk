@@ -38,7 +38,7 @@
 
 #features-list{
   margin:0;
-  list-style-image: url('/Users/stevenklier/Documents/hackreactor/hr-rfe4-front-end-capstone/client/assets/images/features/tick.svg');
+  list-style-image: url('/client/assets/images/features/tick.svg');
 }
 
 #feature-check{
