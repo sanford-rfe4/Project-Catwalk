@@ -20,8 +20,8 @@ const Description = (props: any) => {
   return (
     <div id='description-features-container'>
       <div id='description-container'>
-        <h2>{slogan}</h2>
-        {description}
+        <h1 id='slogan'>{slogan}</h1>
+        <span id='description'>{description}</span>
       </div>
       <div id='features-container'>
         <ul id='features-list'>

@@ -5,6 +5,7 @@ import GET from '../../../../api/GET';
 import Stars from '../reusable/Stars';
 import StyleSelector from './StyleSelector';
 import Cart from './Cart';
+import SocialMedia from './SocialMedia';
 
 const ProductInfo = (props: any) => {
 
@@ -82,6 +83,7 @@ const ProductInfo = (props: any) => {
         </div> :
         '$' + productPrice}
       </div>
+      <SocialMedia/>
       <div id='product-styles-div'>
         <StyleSelector
           styles={styles}
