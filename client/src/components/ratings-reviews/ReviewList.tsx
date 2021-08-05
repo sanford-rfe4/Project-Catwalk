@@ -22,8 +22,7 @@ const ReviewList = (props: any) => {
   const [currentReviews, setCurrentReviews] = useState(2);
   const [noMoreReviews, setNoMoreReviews] = useState(false);
   const [Ratings, setRatings] = useState([]);
-  //console.log(Reviews);
-  //console.log(currentReviews);
+
   useEffect(() => {
     fetchReviews(sort);
   }, [sort, props.productID])
@@ -50,8 +49,7 @@ const ReviewList = (props: any) => {
     }
 
     for (var i = 0; i < currentReviews; i++) {
-     // console.log(props.filter.includes(Ratings[i]));
-      if (!props.filter.includes(Ratings[i]))
+      if (props.filter.includes(Ratings[i]) || props.filter.length === 0)
       reviews.push(Reviews[i]);
     }
     return reviews;

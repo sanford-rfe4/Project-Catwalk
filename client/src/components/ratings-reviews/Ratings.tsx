@@ -61,23 +61,17 @@ const Ratings = (props: any) => {
     setRating(calculations[0]);
 
     var mapped = [];
+    var stars = [0, 1, 2, 3, 4, 5];
     for (var i = 5; i >= 1; i--) {
-      console.log('i', i, calculations[i]);
       mapped.push(
-      <div className='breakdown'>
-        <a className='stars' onClick={() => {props.filterClick(i)}}>
-        {i} stars
-        </a>
         <StarBar
-          filterClick={props.filterClick}
           percent={calculations[i]}
+          filterClick={props.filterClick}
+          ratingsCheck={ratingsCheck}
+          reviews={fetchedData.ratings[i]}
+          rating={i}
           />
-        <div className ='review-amount'>
-          {ratingsCheck(fetchedData.ratings[i])} reviews
-        </div>
-      </div>
       );
-
     }
 
     console.log(recommend.false);

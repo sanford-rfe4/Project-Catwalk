@@ -8,7 +8,11 @@ const StarBar = (props: any) => {
     var widthBar = {width: `${props.percent * 100}%`}
   }
   return (
-    <div className='full-bar'>
+    <div className='breakdown'>
+      <a className='stars' onClick={() => {props.filterClick(props.rating)}}>
+        {props.rating} stars
+      </a>
+      <div className='full-bar'>
         <div
         className = 'back-bar'
         style = {{width: '150px'}}
@@ -17,6 +21,10 @@ const StarBar = (props: any) => {
         id ='bar-percent'
         style = {widthBar}
         />
+        </div>
+      </div>
+      <div className ='review-amount'>
+          {props.ratingsCheck(props.reviews)} reviews
         </div>
     </div>
   )
