@@ -92,7 +92,7 @@ const Ratings = (props: any) => {
       <div className='rating-header'>
         <h1 className='rating'>{Rating}</h1><Stars ratingNum={Rating}/>
       </div>
-      <div>
+      <div style={{width: '100%'}}>
         {Bars}
       </div>
       <div className='recommend'>

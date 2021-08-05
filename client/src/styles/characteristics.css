@@ -1,5 +1,6 @@
 
 .char {
+  font-size: small;
   white-space: pre-line;
 }
 
@@ -18,5 +19,17 @@
 .complete-bar {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+}
+
+.measurement {
+  display: flex;
+  justify-content: space-between;
+  width: 212px;
+  font-size: x-small;
+}
+
+.full-char {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }

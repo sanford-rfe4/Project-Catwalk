@@ -7,8 +7,10 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: left;
   font-size: small;
-  width: 120%;
+  margin-right: 0;
+  width: 80%;
  }
 
 .rating {

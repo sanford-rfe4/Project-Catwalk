@@ -65,7 +65,7 @@ const ReviewList = (props: any) => {
   };
 
   const fetchReviews = async (sort: string) => {
-    var fetchedReviews = await GET.reviews.getSortedProductReviews(props.productID, 1, 20, sort);
+    var fetchedReviews = await GET.reviews.getSortedProductReviews(props.productID, 1, 500, sort);
     let ratingsArray = fetchedReviews.results.map((review: any) => (review.rating));
     let mapped = fetchedReviews.results.map((review: any) => (
     <div className='review'>

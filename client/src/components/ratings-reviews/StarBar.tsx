@@ -10,7 +10,7 @@ const StarBar = (props: any) => {
         >
         <div
         id ='bar-percent'
-        style = {{width: `${props.percent * 100}%`}}
+        style = {{width: `${props.percent * 150}%`}}
         />
         </div>
     </div>
