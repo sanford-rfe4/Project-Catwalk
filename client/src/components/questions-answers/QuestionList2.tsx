@@ -93,7 +93,7 @@ const QuestionList2 = (props: any) => {
       <Modal.Ask show={show}
       close={handleClose} /> */}
       </div>
-      { current === filteredList.length ? null :
+      { current >= filteredList.length ? null :
       <div className='ask-question show-more-questions' onClick={() => updateCurrent(2)}>MORE QUESTIONS</div>
       }
       </div>

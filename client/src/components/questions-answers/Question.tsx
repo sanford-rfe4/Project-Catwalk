@@ -35,11 +35,33 @@ const Helpful = (props: any) => {
 
 const Question = (props: any) => {
 
-
+  const [list, setList] = useState([]);
   const [reported, setReported] = useState(false);
   const [clickedHelpful, setClickedHelpful] = useState(false);
   const [helpful, setHelpful] = useState(0);
   const [show, setShow] = useState(false);
+  const [filteredList, setFilteredList] = useState([]);
+  const [current, setCurrent] = useState(2);
+
+  const updateCurrent = (n: number) => {
+    setCurrent(current + n);
+  };
+  useEffect(() => {
+    setFilteredList(filteredList)
+  }, [current])
+
+  useEffect(() => {
+    setFilteredList(list);
+  }, [list])
+  useEffect(() => {
+    console.log(props.question.answers)
+    let v: any = Object.values(props.question.answers);
+    console.log(list)
+    v.sort((a: any, b: any) => b.helpfulness - a.helpfulness);
+    setList(v);
+
+
+  }, [])
 
   useEffect(() => {
     setHelpful(props.question.question_helpfulness);
@@ -61,6 +83,7 @@ const Question = (props: any) => {
   const handleClose = () => {
     setShow(false);
   }
+
   return (
     <>
     <div className='question'>
@@ -80,10 +103,16 @@ const Question = (props: any) => {
     </div>
     </div>
     <div className='answers'>
-    <List list={Object.values(props.question.answers)}
-    listItem={Answer} displayLength={2}
+    <List list={filteredList.slice(0, current)}
+    listItem={Answer}
      buttonText='LOAD MORE ANSWERS' />
-
+    { current >= filteredList.length ? null :
+      <div onClick={
+        () => {
+          updateCurrent(2)
+          console.log(current)
+        console.log('hi')}}>MORE ANSWERS</div>
+      }
     </div>
     <Modal.Answer question={props.question}
     show={show} close={handleClose} />
