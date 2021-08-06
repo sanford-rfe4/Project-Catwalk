@@ -61,7 +61,7 @@ const ReviewModal = (props: any) => {
     console.log(characteristics);
     var newChar : any = characteristics;
     console.log(newChar);
-    newChar[e.target.name] = e.target.value;
+    newChar[e.target.name] = parseInt(e.target.value);
     console.log(newChar);
     setCharacteristics({...newChar});
     console.log(characteristics);
