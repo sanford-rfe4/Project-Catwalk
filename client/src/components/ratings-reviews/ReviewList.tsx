@@ -47,10 +47,13 @@ const ReviewList = (props: any) => {
     if (currentReviews < 2 && !noMoreReviews) {
       setNoMoreReviews(true);
     }
-
-    for (var i = 0; i < currentReviews; i++) {
-      if (props.filter.includes(Ratings[i]) || props.filter.length === 0)
-      reviews.push(Reviews[i]);
+    var i = 0;
+    console.log(props.filter);
+    while (reviews.length !== currentReviews) {
+      if (props.filter.includes(Ratings[i]) || props.filter.length === 0) {
+        reviews.push(Reviews[i]);
+      }
+      i++;
     }
     return reviews;
   }

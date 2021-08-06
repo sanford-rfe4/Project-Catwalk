@@ -16,6 +16,11 @@ const Overview = (props: any) => {
   let [selectedStylePhotos, setSelectedStylePhotos] = useState([]);
   let [showModal, setShowModal] = useState(false);
   let [modalDisplay, setModalDisplay] = useState("none");
+  let [isExpanded, setIsExpanded] = useState(false);
+
+  let productInfoStyle = {
+    display: isExpanded ? 'none' : 'block'
+  }
 
   useEffect(() => {
     showModal ? setModalDisplay("block") : setModalDisplay("none");
@@ -27,13 +32,15 @@ const Overview = (props: any) => {
       <div id='overview-flex'>
         <div id='gallery-flex'>
           <Gallery
+            isExpanded={isExpanded}
+            setIsExpanded={setIsExpanded}
             product={selectedProduct}
             selectedStyle={selectedStyle}
             styleId={selectedStyleId}
             stylePhotos={selectedStylePhotos}
           />
         </div>
-        <div id='product-info-flex'>
+        <div style={productInfoStyle} id='product-info-flex'>
           <ProductInfo
             product={selectedProduct}
             selectedStyle={selectedStyle}
