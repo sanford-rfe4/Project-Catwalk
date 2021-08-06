@@ -20,6 +20,8 @@
   font-size: small;
 }
 .reviewBody {
+  width: 525px;
+  overflow: hidden;
   padding:10px 0px;
 }
 

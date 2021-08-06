@@ -71,8 +71,15 @@
 }
 
 .radio-char {
+  margin-top: 0;
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
+
+}
+
+.char {
+  display: flex;
+  flex-direction: column;
 }
 /* .description {
   padding: 0;

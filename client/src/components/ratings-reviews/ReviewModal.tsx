@@ -3,16 +3,26 @@ import POST from '../../../../api/POST';
 import GET from '../../../../api/GET';
 import '../../styles/reviewModal.css';
 
+// product_id: String,
+//   rating: Number,
+//   summary: String,
+//   body: String,
+//   recommend: Boolean,
+//   name: String,
+//   email: String,
+//   photos: String[]
+//   characteristics: Object
+
 const ReviewModal = (props: any) => {
-  const [rating, setRating] = useState('');
+  const [rating, setRating] = useState(0);
   const [summary, setSummary] = useState('');
   const [body, setBody] = useState('');
-  const [recommend, setRecommend] = useState('');
+  const [recommend, setRecommend] = useState(false);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
-  const [photos, setPhotos] = useState([]);
+  const [photos, setPhotos] = useState<any>([]);
   const [characteristics, setCharacteristics] = useState({});
-  const [printChar, setPrintChar] = useState([]);
+  const [printChar, setPrintChar] = useState<any>([]);
 
   useEffect(() => {
     radioChar();
@@ -30,24 +40,55 @@ const ReviewModal = (props: any) => {
     console.log('photos: ', photos);
     console.log('characteristic', characteristics);
 
-    // POST.postAnswer(props.question_id,{
-    //   body: body,
-    //   name: name,
-    //   email: email,
-    //   photos: []
-    // })
+    var reqBody = {
+     product_id: props.productID,
+    rating: rating,
+    summary: summary,
+    body: body,
+    recommend: recommend,
+    name: name,
+    email: email,
+    photos: photos,
+    characteristics: characteristics
+    }
+     POST.postReview(reqBody, () => {
+       console.log('post successful')
+     })
 
     props.handleClose();
+  }
+  const updateChar = (e: any) => {
+    console.log(characteristics);
+    var newChar : any = characteristics;
+    console.log(newChar);
+    newChar[e.target.name] = e.target.value;
+    console.log(newChar);
+    setCharacteristics({...newChar});
+    console.log(characteristics);
   }
 
 
   const radioChar = async () => {
     var meta = await GET.reviews.getProductReviewMetaDataById(props.productID);
-    var charID = [];
+    var newPrint = [];
     var charObj : any = {};
     for (var key in meta.characteristics) {
-      charID.push(meta.characteristics[key].id);
+      var id = meta.characteristics[key].id;
+      console.log(id);
+      charObj[id] = null;
+      newPrint.push(
+        <div className='char'>
+        {key}
+        <input type="radio" value={1} name={id} onChange={(e) => {updateChar(e)}}/>
+        <input type="radio" value={2} name={id} onChange={(e) => {updateChar(e)}}/>
+        <input type="radio" value={3} name={id} onChange={(e) => {updateChar(e)}}/>
+        <input type="radio" value={4} name={id} onChange={(e) => {updateChar(e)}}/>
+        <input type="radio" value={5} name={id} onChange={(e) => {updateChar(e)}}/>
+        </div>
+      )
     }
+    setCharacteristics({...charObj});
+    setPrintChar([...newPrint]);
   }
 
   return (
@@ -56,11 +97,11 @@ const ReviewModal = (props: any) => {
     <form className='review-form' onSubmit={handleSubmit}>
         <div>Rating</div>
         <div className = 'radio-rating'>
-        <input type="radio" value={1} name='rating' onChange={(e) => {setRating(e.target.value)}}/>
-        <input type="radio" value={2} name='rating' onChange={(e) => {setRating(e.target.value)}}/>
-        <input type="radio" value={3} name='rating' onChange={(e) => {setRating(e.target.value)}}/>
-        <input type="radio" value={4} name='rating' onChange={(e) => {setRating(e.target.value)}}/>
-        <input type="radio" value={5} name='rating' onChange={(e) => {setRating(e.target.value)}}/>
+        <input type="radio" value={1} name='rating' onChange={(e) => {setRating(parseInt(e.target.value))}}/>
+        <input type="radio" value={2} name='rating' onChange={(e) => {setRating(parseInt(e.target.value))}}/>
+        <input type="radio" value={3} name='rating' onChange={(e) => {setRating(parseInt(e.target.value))}}/>
+        <input type="radio" value={4} name='rating' onChange={(e) => {setRating(parseInt(e.target.value))}}/>
+        <input type="radio" value={5} name='rating' onChange={(e) => {setRating(parseInt(e.target.value))}}/>
         </div>
         <div className='description'>Review Summary</div>
         <textarea placeholder='Example: Best purchase ever!' cols={100} rows={5} value={summary} onChange={(e)=>setSummary(e.target.value)} />
@@ -68,16 +109,19 @@ const ReviewModal = (props: any) => {
         <textarea placeholder='Why did you like the product or not?' cols={100} rows={10} value={body} onChange={(e)=>setBody(e.target.value)} />
         <input type='text' placeholder='Username' value={name} onChange={(e)=> setName(e.target.value)} />
         <input type='text' placeholder='email' value={email} onChange={(e)=> setEmail(e.target.value)} />
-        <div className='rec'>Recommend product?</div>
+        <div className='rec'>Would you recommend this product?</div>
         <div className='recommend-options'>
           <div className = 'radio-recommend'>
-            <input type="radio" value='true' name='recommendation' onChange={(e) => {setRecommend(e.target.value)}}/>
+            <input type="radio" value='true' name='recommendation' onChange={(e) => {setRecommend(true)}}/>
             Yes
           </div>
           <div className = 'radio-recommend'>
-            <input type="radio" value='false' name='recommendation' onChange={(e) => {setRecommend(e.target.value)}}/>
+            <input type="radio" value='false' name='recommendation' onChange={(e) => {setRecommend(false)}}/>
             No
           </div>
+        </div>
+        <div>
+          Characteristic Ratings
         </div>
         <div className ='radio-char'>
         {printChar}
