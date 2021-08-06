@@ -42,7 +42,6 @@ const Ratings = (props: any) => {
         calculations[value] = percent;
       }
     }
-    console.log(calculations);
     averageRating = totalRating/totalReviews;
     calculations[0] = Math.round(averageRating * 10) /10;
     return calculations;
@@ -74,10 +73,8 @@ const Ratings = (props: any) => {
       );
     }
 
-    console.log(recommend.false);
     var recTrue = parseInt(recommend.true);
     var recFalse = parseInt(recommend.false);
-    console.log(recFalse, recTrue);
     if (!recTrue && !recFalse) {
       setRecommendPercent(0);
     } else if (!recFalse) {

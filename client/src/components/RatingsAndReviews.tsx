@@ -37,8 +37,9 @@ const RatingsAndReviews = (props: any) => {
     }
   }
   const filterClick = (rating : number) => {
-    var newFilter = [...filter];
+    var newFilter = [];
     if (!filter.includes(rating)) {
+      newFilter = filter;
       console.log('filter', filter);
       newFilter.push(rating);
       console.log('newFilter', newFilter);
