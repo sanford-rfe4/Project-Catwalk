@@ -64,6 +64,16 @@
   padding: 5px;
 }
 
+.radio-rating {
+  display: flex;
+  margin: 0;
+  justify-content: left;
+}
+
+.radio-char {
+  display: flex;
+  justify-content: center;
+}
 /* .description {
   padding: 0;
   padding: 20px;

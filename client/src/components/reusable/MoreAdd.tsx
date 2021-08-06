@@ -13,7 +13,7 @@ const MoreAdd = (props: any) => {
   }
   const renderModal = () => {
     if (openModal === true) {
-      return (<ReviewModal handleClose={handleClose}/>)
+      return (<ReviewModal productID={props.productID} handleClose={handleClose}/>)
     } else {
       return null;
     }

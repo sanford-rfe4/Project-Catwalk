@@ -21,8 +21,8 @@ const RatingsAndReviews = (props: any) => {
 
   const clearFilter = () => {
     var arr : any = [];
-    setFilter(new Array(0));
-    console.log(filter);
+    setFilter([]);
+    console.log('clear: ', filter);
   }
 
   const renderClear = () => {
@@ -33,9 +33,9 @@ const RatingsAndReviews = (props: any) => {
     }
   }
   const filterClick = (rating : number) => {
+    var newFilter = [...filter];
     if (!filter.includes(rating)) {
       console.log('filter', filter);
-      var newFilter = filter;
       newFilter.push(rating);
       console.log('newFilter', newFilter);
       setFilter([...newFilter]);
