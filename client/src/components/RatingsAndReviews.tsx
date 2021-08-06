@@ -21,21 +21,25 @@ const RatingsAndReviews = (props: any) => {
 
   const clearFilter = () => {
     var arr : any = [];
-    setFilter(new Array(0));
-    console.log(filter);
+    setFilter([]);
+    console.log('clear: ', filter);
   }
 
   const renderClear = () => {
     if (filter.length > 0) {
-      return (<button onClick={() => {clearFilter()}}>Clear filters</button>)
+      return (<button
+      className='clear-filter'
+      onClick={() => {clearFilter()}}>
+      Clear filters
+      </button>)
     } else {
       console.log(filter);
     }
   }
   const filterClick = (rating : number) => {
+    var newFilter = [...filter];
     if (!filter.includes(rating)) {
       console.log('filter', filter);
-      var newFilter = filter;
       newFilter.push(rating);
       console.log('newFilter', newFilter);
       setFilter([...newFilter]);
