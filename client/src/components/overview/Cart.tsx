@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { reduceEachLeadingCommentRange } from 'typescript';
 import POST from '../../../../api/POST';
 import '../../styles/cart.css';
 
@@ -16,12 +17,28 @@ const Cart = (props: any) => {
   let [quantityOpen, setQuantityOpen] = useState(false);
   let [isQuantitySelected, setIsQuantitySelected] = useState(false);
 
+  let [messageDisplay, setMessageDisplay] = useState('none');
+
   let quantityListStyle = {
     display: quantityOpen ? 'flex' : 'none'
   }
 
   let sizeListStyle = {
     display: sizeOpen ? 'flex' : 'none'
+  }
+
+  let selectSizeMessageStyle = {
+    color: 'red',
+    display: messageDisplay
+  }
+
+  const displayMessage = () => {
+    setMessageDisplay('block');
+    setSizeOpen(true);
+  }
+
+  const hideMessage = () => {
+    setMessageDisplay('none');
   }
 
   const findCurrentStyleAndSizes = async () => {
@@ -94,6 +111,9 @@ const Cart = (props: any) => {
 
   return (
     <div id='dropdown-container'>
+      <div style={selectSizeMessageStyle} id='select-size-message'>
+        please select a size
+      </div>
       <div id='size-quantity-container'>
         <div
           onClick={() => {
@@ -125,6 +145,7 @@ const Cart = (props: any) => {
               onClick={(e: any) => {
                 setSelectedSize(e.target.innerText);
                 setSelectedQuantity(1);
+                hideMessage();
               }}
               className='size-item'>{size.size}</span>
             })}
@@ -168,9 +189,8 @@ const Cart = (props: any) => {
       </div>
 
       {console.log()}
-
       <div id='add-to-bag-favorite-container'>
-        <div onClick={selectedSize !== 'SELECT SIZE' ? addToBag : () => {}} className='product-info-dropdown' id='add-to-bag'>
+        <div onClick={selectedSize !== 'SELECT SIZE' ? addToBag : displayMessage} className='product-info-dropdown' id='add-to-bag'>
           ADD TO BAG
           <img id='plus-sign' src='client/assets/images/product-info/plus.svg'></img>
         </div>

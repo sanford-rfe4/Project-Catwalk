@@ -1,11 +1,11 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, MouseEventHandler} from 'react';
 import GET from '../../../../api/GET';
 import '../../styles/gallery.css'
 import StyleSelector from './StyleSelector';
 
 const Gallery = (props: any) => {
 
-  let {product, selectedStyle, styleId, stylePhotos} = props;
+  let {isExpanded, setIsExpanded, product, selectedStyle, styleId, stylePhotos} = props;
 
   let black = 'invert(0%) sepia(93%) saturate(0%) hue-rotate(310deg) brightness(100%) contrast(102%)';
   let grey = 'invert(99%) sepia(0%) saturate(35%) hue-rotate(139deg) brightness(83%) contrast(102%)';
@@ -16,12 +16,58 @@ const Gallery = (props: any) => {
   let [trimmedStylePhotosIndex, setTrimmedStylePhotosIndex] = useState(0);
   let [startingIndex, setStartingIndex] = useState(0);
   let [endingIndex, setEndingIndex] = useState(7);
+  let [isZoomedIn, setIsZoomedIn] = useState(false);
 
-  let galleryBackgroundImage = {
+  let [backgroundPositionX, setBackgroundPositionX] = useState<number>(0);
+  let [backgroundPositionY, setBackgroundPositionY] = useState<number>(0);
+
+  let [clickedX, setClickedX] = useState<number>(0);
+  let [clickedY, setClickedY] = useState<number>(0);
+
+  interface galleryStyle {
+    backgroundImage: string,
+    backgroundPosition?: string,
+    backgroundPositionX?: string,
+    backgroundPositionY?: string,
+    backgroundRepeat: string,
+    backgroundSize: string,
+    width: string,
+    cursor: string,
+    transition: string
+  }
+
+  let galleryBackgroundImage: galleryStyle = {
     backgroundImage: `url(${currentStylePhoto})`,
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
-    backgroundSize: 'contain'
+    backgroundSize: isExpanded && isZoomedIn ? 'cover' : 'contain',
+    width: isExpanded ? '1090px' : '700px',
+    cursor: isExpanded && isZoomedIn === false ? 'zoom-in' : isExpanded && isZoomedIn ? 'zoom-out' : 'zoom-in',
+    transition: 'width 0.5s'
+  }
+
+  let galleryStyleZoomedIn: galleryStyle = {
+    backgroundImage: `url(${currentStylePhoto})`,
+    // backgroundPosition: 'center',
+    backgroundPositionX: (backgroundPositionX + clickedX) + 'px',
+    backgroundPositionY: (backgroundPositionY + clickedY) + 'px',
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: isExpanded && isZoomedIn ? 'cover' : 'contain',
+    width: isExpanded ? '1090px' : '700px',
+    cursor: isExpanded && isZoomedIn === false ? 'zoom-in' : isExpanded && isZoomedIn ? 'zoom-out' : 'zoom-in',
+    transition: 'width 0.5s'
+  }
+
+  let clickGallery = () => {
+    if (isExpanded && isZoomedIn === false) {
+      setIsZoomedIn(true);
+    } else if (isExpanded && isZoomedIn === true) {
+      setIsZoomedIn(false);
+    }
+    if (isExpanded === false) {
+      setIsExpanded(true);
+      setIsZoomedIn(false);
+    }
   }
 
   let upArrowStyle = {
@@ -35,11 +81,13 @@ const Gallery = (props: any) => {
   }
 
   let leftArrowStyle = {
-    display: currentStylePhotosIndex === 0 ? 'none' : 'block'
+    display: currentStylePhotosIndex === 0 || isZoomedIn ? 'none' : 'block',
+    zIndex: 999
   }
 
   let righArrowStyle = {
-    display: currentStylePhotosIndex === stylePhotos.length - 1 ? 'none' : 'block'
+    display: currentStylePhotosIndex === stylePhotos.length - 1 || isZoomedIn ? 'none' : 'block',
+    zIndex: 999
   }
 
   const thumbnailClick = (e: any) => {
@@ -161,8 +209,30 @@ const Gallery = (props: any) => {
           onClick={downArrowClick}>
         </img>
       </div>
-      <div style={galleryBackgroundImage} id='image-gallery'>
-        <img id='expand' src='client/assets/images/gallery/fullscreen.svg' alt='expand'></img>
+      <div
+        onMouseMove={(e: any) => {
+          console.log(backgroundPositionX);
+          console.log(e.nativeEvent.offsetX)
+          console.log(clickedX)
+          setBackgroundPositionX(-e.nativeEvent.offsetX);
+          setBackgroundPositionY(-e.nativeEvent.offsetY);
+        }}
+        onClick={(e: any) => {
+          if (isExpanded) {
+            setClickedX(e.nativeEvent.offsetX);
+            setClickedY(e.nativeEvent.offsetY);
+          }
+        }}
+        style={isExpanded && isZoomedIn ? galleryStyleZoomedIn : galleryBackgroundImage} id='image-gallery'>
+        <img
+          onClick={() => {
+            isExpanded === true ? setIsExpanded(false) : setIsExpanded(true)
+            setIsZoomedIn(false);
+          }}
+          id='expand'
+          src='client/assets/images/gallery/fullscreen.svg'
+          alt='expand'>
+        </img>
         <svg
           onClick={leftArrowClick}
           style={leftArrowStyle}
@@ -175,6 +245,9 @@ const Gallery = (props: any) => {
               d="M26,22a2,2,0,0,1-1.41-.59L16,12.83,7.41,21.41a2,2,0,0,1-2.82-2.82l10-10a2,2,0,0,1,2.82,0l10,10A2,2,0,0,1,26,22Z"
             />
         </svg>
+        <div onClick={clickGallery} id='image-click-box'>
+
+        </div>
         <svg
           onClick={rightArrowClick}
           style={righArrowStyle}
