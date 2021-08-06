@@ -21,6 +21,7 @@
 }
 .reviewBody {
   max-width: 850px;
+  min-width: 500px;
   overflow: hidden;
   padding:10px 0px;
 }
