@@ -5,6 +5,8 @@ const StyleSelector = (props: any) => {
 
   let {styles, setStylePrice, setStyleDiscountPrice, selectedStyle, setStyle, setStyleId, setStylePhotos} = props;
 
+  let tickStyle: any = {width: '10px', position: 'absolute' , top: '0', display: 'none'}
+
   const setCurrentStyle = (e: any) => {
     let currentlySelected = document.querySelector('.current-thumbnail');
     if (currentlySelected !== null) {
@@ -43,14 +45,17 @@ const StyleSelector = (props: any) => {
         <div id='thumb-nails'>
           {styles.map((style: any, index: number) => {
             return (
-                <img
-                  onClick={setCurrentStyle}
-                  className='style-thumbnail'
-                  alt={style.name}
-                  src={style.photos[0].thumbnail_url}
-                  key={index}
-                  id={'img' + index}>
-                </img>
+                <div style={{display: 'flex', flexWrap: 'wrap', flexDirection: 'row', position: 'relative', width: '67px', height: '67px', marginRight: '15px', marginTop: '15px'}}>
+                  <img style={tickStyle} src='client/assets/images/features/tick.svg'></img>
+                  <img
+                    onClick={setCurrentStyle}
+                    className='style-thumbnail'
+                    alt={style.name}
+                    src={style.photos[0].thumbnail_url}
+                    key={index}
+                    id={'img' + index}>
+                  </img>
+                </div>
               )
           })}
         </div>
