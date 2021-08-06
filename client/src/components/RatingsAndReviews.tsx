@@ -27,7 +27,11 @@ const RatingsAndReviews = (props: any) => {
 
   const renderClear = () => {
     if (filter.length > 0) {
-      return (<button onClick={() => {clearFilter()}}>Clear filters</button>)
+      return (<button
+      className='clear-filter'
+      onClick={() => {clearFilter()}}>
+      Clear filters
+      </button>)
     } else {
       console.log(filter);
     }
