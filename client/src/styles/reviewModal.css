@@ -30,10 +30,10 @@
 }
 
 .review-form  > * {
-  margin:2ch;
+  margin:1ch;
   display: flex;
   justify-content: space-between;
-  padding:2ch;
+  padding:1ch;
   font-size: larger;
 }
 
@@ -45,3 +45,27 @@
   margin: auto;
   margin-bottom:3ch;
 }
+
+.rec {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.recommend-options {
+  font-size: medium;
+  margin: 0 10px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.radio-recommend {
+  display: flex;
+  padding: 5px;
+}
+
+/* .description {
+  padding: 0;
+  padding: 20px;
+  margin: 0;
+} */
