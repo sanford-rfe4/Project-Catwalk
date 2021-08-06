@@ -48,7 +48,7 @@ const ReviewList = (props: any) => {
       setNoMoreReviews(true);
     }
     var i = 0;
-    console.log(props.filter);
+    console.log('inside reviewlist filter: ', props.filter);
     while (reviews.length !== currentReviews) {
       if (props.filter.includes(Ratings[i]) || props.filter.length === 0) {
         reviews.push(Reviews[i]);
